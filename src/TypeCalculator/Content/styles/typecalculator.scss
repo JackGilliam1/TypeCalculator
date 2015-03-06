@@ -1,0 +1,103 @@
+@import 'typecolors';
+
+.centered {
+    text-align: center;
+}
+
+.selection-section {
+  height: 100%;
+}
+
+.float-left {
+  float: left;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.selection-item {
+  display: block;
+  text-align: center;
+
+  &.selection-header {
+    background: whitesmoke;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 3px;
+  }
+}
+
+.top {
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.bottom {
+  border: 1px solid black;
+}
+
+.clickable {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+
+  &:hover {
+    background: #6890f0;
+    color: white;
+  }
+
+  &.selected {
+    background: #FFFFE0;
+    color: black;
+    cursor: default;
+  }
+}
+
+.stretch.at-top {
+  background: #6890f0;
+}
+
+#statusBadge {
+  margin-left: 2px;
+}
+
+.inline {
+  display: inline-block;
+  margin: 1px;
+}
+
+.typesSection {
+  .left, .right, .center {
+    text-align: center;
+    font-size: 32px;
+
+    &.column {
+      border: 1px solid black;
+    }
+  }
+}
+
+.column {
+  h2 {
+    padding: 10px;
+  }
+}
+
+.type {
+  color: white;
+  display: block;
+  padding-bottom: 2px;
+}
+
+.types {
+    display: block;
+    border-top: 1px solid black;
+}
+
+.count {
+  color: black;
+  background: whitesmoke;
+  border-bottom: 1px solid black;
+}

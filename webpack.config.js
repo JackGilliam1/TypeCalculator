@@ -10,12 +10,13 @@ module.exports = {
     module: {
             loaders: [
                 { test: /\.css$/, loader: 'style!css' },
-                { test: /\.jsx$/, loader: 'jsx' }
+                { test: /\.jsx$/, loader: 'jsx' },
+                { test: /\.scss$/, loader: 'style!css!sass' }
             ]
     },
     
     resolve: {
             modulesDirectories: ['node_modules', 'scripts', 'styles', 'scripts/util', 'scripts/lib'],
-            extensions: ['', '.js', '.jsx', '.css']
+            extensions: ['', '.js', '.jsx', '.css', '.sass']
     }
 }

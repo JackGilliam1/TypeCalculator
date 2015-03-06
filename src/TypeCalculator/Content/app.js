@@ -1,2 +1,2 @@
-require('typecalculator.css');
+require('typecalculator.scss');
 require('typecalculator.jsx');

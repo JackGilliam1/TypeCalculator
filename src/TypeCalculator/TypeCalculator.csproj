@@ -99,12 +99,16 @@
     <Content Include="Content\scripts\bundle.js" />
     <Content Include="Content\scripts\util\jquery.js" />
     <None Include="Content\scripts\typecalculator.jsx" />
-    <Content Include="Content\styles\typecalculator.css" />
+    <Content Include="Content\scripts\typessection.jsx" />
+    <None Include="Content\styles\typecalculator.scss" />
     <Content Include="Global.asax" />
     <Content Include="ripple.dependencies.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\scripts\typeelement.jsx" />
+    <Content Include="Content\scripts\typeslist.jsx" />
+    <Content Include="Content\styles\typecolors.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Shared\Application.spark" />
@@ -126,7 +130,7 @@
     <Folder Include="Content\scripts\lib\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\scripts\typecomponents.jsx" />
+    <Content Include="Content\scripts\typeheader.jsx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

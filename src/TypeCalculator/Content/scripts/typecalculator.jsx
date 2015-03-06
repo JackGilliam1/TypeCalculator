@@ -1,42 +1,40 @@
 var $ = require('jquery.js');
-var TypeDropdown = require('typecomponents.jsx');
+var TypeDropdown = require('typeheader.jsx');
+var TypesList = require('typeslist.jsx');
+var TypesSection = require('typessection.jsx');
 var React = require('react');
+
 $(document).ready(function() {
   var firstType = 'None',
-    secondType = 'None';
-
-  var setupTypeDropdown = function() {
-    updateValues('None', 'None');
-  },
+    secondType = 'None',
+    setupTypeDropdown = function() {
+      updateValues('None', 'None');
+    },
     updateStrongAttack = function(strongAttack) {
-      update(strongAttack, 'strong', 'attack');
+      update(strongAttack, 'strong', 'attack', 'Strong Attack Against', 'left column');
     },
     updateWeakAttack = function(weakAttack) {
-      update(weakAttack, 'weak', 'attack');
-    },
-    updateWeakDefense = function(weakDefense) {
-      update(weakDefense, 'weak', 'defense');
-    },
-    updateImmunities = function(immuneDefense) {
-      update(immuneDefense, 'immune', 'defense');
+      update(weakAttack, 'weak', 'attack', 'Weak Attack Against', 'right column');
     },
     updateStrongDefense = function(strongDefense) {
-      update(strongDefense, 'strong', 'defense');
+      update(strongDefense, 'strong', 'defense', 'Strong Defense Against', 'left column');
     },
-    update = function(elementTypes, id, section) {
-      var selector = '#' + section + 'Section .' + id + ' .types',
+    updateWeakDefense = function(weakDefense) {
+      update(weakDefense, 'weak', 'defense', 'Weak Defense Against', 'center column');
+    },
+    updateImmunities = function(immuneDefense) {
+      update(immuneDefense, 'immune', 'defense', 'Immune Defense', 'right column');
+    },
+    update = function(elementTypes, id, section, columnTitle, className) {
+      var selector = '.' + section + 'Section.' + id,
         i;
 
-      $(selector).html('');
-
       if (!elementTypes || elementTypes.length === 0) {
-        $(selector).append('<span class="type displayInline none">None</span>');
+        React.render(<TypesList types={["None"]} className={className} columnTitle={columnTitle} />, $(selector)[0]);
         return;
       }
-
-      for (i = 0; i < elementTypes.length; i++) {
-        $(selector).append('<span class="type displayInline ' + elementTypes[i].toLowerCase() + '">' + elementTypes[i] + '</span>');
-      }
+      React.render(<TypesList types={elementTypes} className={className} columnTitle={columnTitle} />, $(selector)[0]);
+      React.render(<TypesSection firstTypeChanged={typeOneChanged} secondTypeChanged={typeTwoChanged} selectedFirstType={firstType} selectedSecondType={secondType}/>, document.getElementById('leftSection'));
     },
     updateValues = function(type, typeTwo) {
       changeStatus('Updating');
@@ -53,17 +51,17 @@ $(document).ready(function() {
       });
     },
     typeOneChanged = function(e) {
-      firstType = e.target.value;
+      firstType = e.target.value || e.target.outerText;
       updateValues(firstType, secondType);
     },
     typeTwoChanged = function(e) {
-      secondType = e.target.value;
+      secondType = e.target.value || e.target.outerText;
       updateValues(firstType, secondType);
     },
     changeStatus = function(status) {
       React.render(<TypeDropdown firstTypeChanged={typeOneChanged} secondTypeChanged={typeTwoChanged} status={status} />, document.getElementById('typeDropdown'));
+      React.render(<TypesSection firstTypeChanged={typeOneChanged} secondTypeChanged={typeTwoChanged} selectedFirstType={firstType} selectedSecondType={secondType} />, document.getElementById('leftSection'));
     };
+
     setupTypeDropdown();
-  
-  changeStatus('Updating');
 });

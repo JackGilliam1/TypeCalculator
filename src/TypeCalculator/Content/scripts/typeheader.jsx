@@ -8,7 +8,7 @@ var UpdateStatus = React.createClass({
   }
 });
 
-var TypeDropdown = React.createClass({
+module.exports = React.createClass({
   displayName: "TypeDropdown",
   getInitialState: function() {
     return {
@@ -49,4 +49,3 @@ var TypeDropdown = React.createClass({
     );
   }
 });
-module.exports = TypeDropdown;

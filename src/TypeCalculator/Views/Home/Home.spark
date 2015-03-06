@@ -1,34 +1,29 @@
 ﻿<viewdata model="TypeCalculator.Views.Home.HomeViewModel">
 <set Title="'I am ze title thingy'"/>
 
-<div id="typeDropdown" class="centered at-top stretch">
+<div id="leftSection" class="float-left selection-section left">
+  <span>
+    <div id="top" class="top">
+      <li class="selection-item selection-header">First</li>
+      <li class="clickable selection-item">None</li>
+    </div>
+    <div id="bottom" class="bottom">
+      <li class="selection-item selection-header">Second</li>
+      <li class="clickable selection-item selected">None</li>
+    </div>
+  </span>
 </div>
-<div id="attackSection" class="left attack column column-half">
-  <div class="left strong column column-half">
-    <h2>Strong Attack Against</h2>
-    <span class="types">
-    </span>
+<div id="rightSection" class="float-left clear-right right typesSection">
+  <div id="typeDropdown" class="centered at-top stretch">
   </div>
-  <div class="center weak column column-half">
-    <h2>Weak Attack Against</h2>
-    <span class="types">
+    <span class="attackSection strong inline column-fifth">
     </span>
-  </div>
-</div>
-<div id="defenseSection" class="right defense column-half">
-  <div class="left strong column column-third">
-    <h2>Strong Defense Against</h2>
-    <span class="types">
+    <span class="attackSection weak inline column-fifth">
     </span>
-  </div>
-  <div class="center weak column column-third">
-    <h2>Weak Defense Against</h2>
-    <span class="types">
+    <span class="defenseSection strong inline column-fifth">
     </span>
-  </div>
-  <div class="right immune column column-third">
-    <h2>Immune Defense Against</h2>
-    <span class="types">
+    <span class="defenseSection weak inline column-fifth">
     </span>
-  </div>
+    <span class="defenseSection immune inline column-fifth">
+    </span>
 </div>

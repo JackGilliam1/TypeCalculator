@@ -1,15 +1,5 @@
-.centered {
-    text-align:center;
-}
-
-.stretch {
-    background: cyan;
-    width: 100%;
-    display: inline-block;
-}
-
-.type {
-  color: white;
+﻿.none {
+  background: #68A090;
 }
 
 .bug {
@@ -82,40 +72,4 @@
 
 .water {
   background: #6890F0;
-}
-
-.none {
-  background: #68A090;
-}
-
-.column-third {
-  width: 33%;
-}
-
-.column-left {
-  float: left;
-  width: 50%;
-}
-
-.left, .right, .center {
-    border: 1px solid black;
-    float: left;
-    text-align: center;
-    font-size: 32px;
-    margin: 1px;
-}
-
-.column {
-  min-width: 280px;
-}
-
-.types {
-    width: 100%;
-    display: inline-block;
-}
-
-.types .displayInline {
-    display: inline-block;
-    width: 100%;
-    border-top: 1px solid black;
 }
