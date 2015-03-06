@@ -1,0 +1,10 @@
+{
+    "name": "TypeCalculator",
+    "version": "0.0.1",
+    "private": true,
+    "preferGlobal": true,
+    "devDependencies": {
+        "react": "^0.12.2",
+        "requirejs": "^2.1.13"
+    }
+}

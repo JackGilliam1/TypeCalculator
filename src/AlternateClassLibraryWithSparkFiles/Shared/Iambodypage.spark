@@ -1,0 +1,17 @@
+﻿<global type="string" Title="'Type Calculamator'" />
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>${Title}</title>
+    <script type="text/javascript" src="~/content/scripts/lib/jquery.js"></script>
+    <script type="text/javascript" src="~/content/scripts/lib/react.min.js"></script>
+    <script type="text/javascript" src="~/content/scripts/typecalculator.js"></script>
+    <script type="text/javascript" src="~/content/scripts/typecomponents.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/content/styles/typecalculator.css" />
+  </head>
+  <body>
+    <use:view />
+  </body>
+</html>
