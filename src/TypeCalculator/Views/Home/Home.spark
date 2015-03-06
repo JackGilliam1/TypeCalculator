@@ -2,13 +2,6 @@
 <set Title="'I am ze title thingy'"/>
 
 <div id="typeDropdown" class="centered at-top stretch">
-  <span id="typeDropdownSection">
-  <select id="typeSelectOne">
-  </select>
-  <select id="typeSelectTwo">
-  </select>
-  <span id="statusBadge">Updating</span>
-</span>
 </div>
 <div id="attackSection" class="left attack column column-half">
   <div class="left strong column column-half">

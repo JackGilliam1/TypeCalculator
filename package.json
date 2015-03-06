@@ -4,7 +4,9 @@
     "private": true,
     "preferGlobal": true,
     "devDependencies": {
-        "react": "^0.12.2",
-        "requirejs": "^2.1.13"
+        "css-loader": "^0.9.1",
+        "style-loader": "^0.8.3",
+        "jsx-loader": "^0.12.2",
+        "react": "^0.12.2"
     }
 }

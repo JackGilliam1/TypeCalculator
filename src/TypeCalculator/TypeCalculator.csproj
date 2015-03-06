@@ -95,10 +95,10 @@
     <Compile Include="Views\Types\TypesResponse.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\scripts\lib\jquery.js" />
-    <Content Include="Content\scripts\lib\react.min.js" />
-    <Content Include="Content\scripts\typecalculator.js" />
-    <Content Include="Content\scripts\typecomponents.js" />
+    <Content Include="Content\app.js" />
+    <Content Include="Content\scripts\bundle.js" />
+    <Content Include="Content\scripts\util\jquery.js" />
+    <None Include="Content\scripts\typecalculator.jsx" />
     <Content Include="Content\styles\typecalculator.css" />
     <Content Include="Global.asax" />
     <Content Include="ripple.dependencies.config" />
@@ -123,8 +123,10 @@
     <Content Include=".package-manifest" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\scripts\app\" />
-    <Folder Include="Content\scripts\util\" />
+    <Folder Include="Content\scripts\lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\scripts\typecomponents.jsx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
