@@ -93,6 +93,8 @@
     <Compile Include="Views\Types\TypesRequest.cs" />
     <Compile Include="Views\Types\TypesResponse.cs" />
     <Compile Include="Views\TypesDictionary.cs" />
+    <Compile Include="Views\Types\TypesTableRequest.cs" />
+    <Compile Include="Views\Types\TypesTableResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app.js" />

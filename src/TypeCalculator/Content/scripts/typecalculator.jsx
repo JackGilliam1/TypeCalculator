@@ -13,9 +13,10 @@ var SwitchLayoutsSection = React.createClass({
     };
   },
   render: function() {
+    var defaultLayout = this.props.defaultSelection || "Column";
     return (
       <span id="switchLayoutSection">
-        <select defaultValue="Column" onChange={this.handleChange(this.props.onLayoutSwitch)}>
+        <select defaultValue={defaultLayout} onChange={this.handleChange(this.props.onLayoutSwitch)}>
           <option value="Table">Table Layout</option>
           <option value="Column">Column Layout</option>
         </select>
@@ -32,13 +33,16 @@ module.exports = TypeCalculator = React.createClass({
     return {
       selectedFirstType: 'None',
       selectedSecondType: 'None',
-      layout: 'Column',
+      layout: 'Table',
       strongAttack: defaultTypes,
       weakAttack: defaultTypes,
       strongDefense: defaultTypes,
       weakDefense: defaultTypes,
       immuneDefense: defaultTypes
     };
+  },
+  updateTableValues: function(type, typeTwo) {
+    var self = this;
   },
   updateValues: function(type, typeTwo) {
       var self = this;
@@ -93,7 +97,7 @@ module.exports = TypeCalculator = React.createClass({
          selectedSecondType={this.state.selectedSecondType}
          firstTypeChanged={this.firstTypeChanged}
          secondTypeChanged={this.secondTypeChanged}  />
-         <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} />
+         <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} defaultSelection={this.state.layout} />
         <Sidebar
          types={this.state.types}
          selectedFirstType={this.state.selectedFirstType}

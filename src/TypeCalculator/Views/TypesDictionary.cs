@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TypeCalculator.Core;
 
@@ -45,6 +46,47 @@ namespace TypeCalculator.Views
         public IList<ElementType> GetStrongDefense(ElementType type)
         {
             return GetFrom(StrongDefense, type);
+        }
+
+        public IDictionary<ElementType, IDictionary<ElementType, double>> GetStats()
+        {
+            IDictionary<ElementType, IDictionary<ElementType, double>> statsDictionary = new Dictionary<ElementType, IDictionary<ElementType, double>>();
+
+            var elementTypes = ((ElementType[]) Enum.GetValues(typeof (ElementType))).Where(x => !x.Equals(ElementType.None)).ToList();
+
+            elementTypes.Each(x => statsDictionary.Add(x, new Dictionary<ElementType, double>()));
+
+            foreach (var elementType in elementTypes)
+            {
+                var strongDefenses = GetStrongDefense(elementType);
+                var weakDefenses = GetWeakDefense(elementType);
+                var immuneDefenses = GetImmuneDefense(elementType);
+                foreach (var strongDefense in strongDefenses)
+                {
+                    statsDictionary[strongDefense].Add(elementType, 0.5);
+                }
+
+                foreach(var weakDefense in weakDefenses)
+                {
+                    statsDictionary[weakDefense].Add(elementType, 2);
+                }
+
+                foreach (var immuneDefense in immuneDefenses)
+                {
+                    statsDictionary[immuneDefense].Add(elementType, 0);
+                }
+
+                foreach (var elementTypeTwo in elementTypes)
+                {
+                    var dictionary = statsDictionary[elementTypeTwo];
+                    if (!dictionary.ContainsKey(elementType))
+                    {
+                        dictionary.Add(elementType, 1);
+                    }
+                }
+            }
+
+            return statsDictionary;
         }
 
         private static IList<ElementType> GetFrom(IDictionary<ElementType, IList<ElementType>> typeDictionary, ElementType type)
@@ -163,6 +205,30 @@ namespace TypeCalculator.Views
         }
     }
 
+    public class ElementStats
+    {
+        public string ElementType { get; private set; }
+        public IList<ElementStat> Stats { get; private set; }
+
+        public ElementStats(string elementType)
+        {
+            ElementType = elementType;
+            Stats = new List<ElementStat>();
+        }
+    }
+
+    public class ElementStat
+    {
+        public string ElementType { get; private set; }
+        public double Multiplier { get; private set; }
+
+        public ElementStat(string elementType, double multiplier)
+        {
+            ElementType = elementType;
+            Multiplier = multiplier;
+        }
+    }
+
     public interface ITypesDictionary
     {
         IList<ElementType> GetStrongAttack(ElementType type);
@@ -170,5 +236,6 @@ namespace TypeCalculator.Views
         IList<ElementType> GetWeakDefense(ElementType type);
         IList<ElementType> GetImmuneDefense(ElementType type);
         IList<ElementType> GetStrongDefense(ElementType type);
+        IDictionary<ElementType, IDictionary<ElementType, double>> GetStats();
     }
 }
