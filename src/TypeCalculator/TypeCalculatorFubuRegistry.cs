@@ -9,6 +9,7 @@ namespace TypeCalculator
 		public TypeCalculatorFubuRegistry()
 		{
             Routes.HomeIs<HomeInputModel>();
+            AlterSettings<SparkEngineSettings>(x => x.PrecompileViews = false);
 		    // Register any custom FubuMVC policies, inclusions, or 
 		    // other FubuMVC configuration here
 		    // Or leave as is to use the default conventions unchanged

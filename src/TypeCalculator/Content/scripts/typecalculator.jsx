@@ -1,67 +1,111 @@
-var $ = require('jquery.js');
-var TypeDropdown = require('typeheader.jsx');
-var TypesList = require('typeslist.jsx');
-var TypesSection = require('typessection.jsx');
-var React = require('react');
+﻿var React = require('react');
+var $ = require('jquery');
 
-$(document).ready(function() {
-  var firstType = 'None',
-    secondType = 'None',
-    setupTypeDropdown = function() {
-      updateValues('None', 'None');
-    },
-    updateStrongAttack = function(strongAttack) {
-      update(strongAttack, 'strong', 'attack', 'Strong Attack Against', 'left column');
-    },
-    updateWeakAttack = function(weakAttack) {
-      update(weakAttack, 'weak', 'attack', 'Weak Attack Against', 'right column');
-    },
-    updateStrongDefense = function(strongDefense) {
-      update(strongDefense, 'strong', 'defense', 'Strong Defense Against', 'left column');
-    },
-    updateWeakDefense = function(weakDefense) {
-      update(weakDefense, 'weak', 'defense', 'Weak Defense Against', 'center column');
-    },
-    updateImmunities = function(immuneDefense) {
-      update(immuneDefense, 'immune', 'defense', 'Immune Defense', 'right column');
-    },
-    update = function(elementTypes, id, section, columnTitle, className) {
-      var selector = '.' + section + 'Section.' + id,
-        i;
+var TypeDropdown = require('typedropdown.jsx');
+var Sidebar = require('typesidebar.jsx');
+var TypesColumnLayout = require('typescolumnlayout.jsx');
+var TypesTableLayout = require('typestablelayout.jsx');
 
-      if (!elementTypes || elementTypes.length === 0) {
-        React.render(<TypesList types={["None"]} className={className} columnTitle={columnTitle} />, $(selector)[0]);
-        return;
-      }
-      React.render(<TypesList types={elementTypes} className={className} columnTitle={columnTitle} />, $(selector)[0]);
-      React.render(<TypesSection firstTypeChanged={typeOneChanged} secondTypeChanged={typeTwoChanged} selectedFirstType={firstType} selectedSecondType={secondType}/>, document.getElementById('leftSection'));
-    },
-    updateValues = function(type, typeTwo) {
-      changeStatus('Updating');
+var SwitchLayoutsSection = React.createClass({
+  handleChange: function(onLayoutSwitch) {
+    return function(e) {
+      onLayoutSwitch(e.target.value);
+    };
+  },
+  render: function() {
+    return (
+      <span id="switchLayoutSection">
+        <select defaultValue="Column" onChange={this.handleChange(this.props.onLayoutSwitch)}>
+          <option value="Table">Table Layout</option>
+          <option value="Column">Column Layout</option>
+        </select>
+      </span>
+    );
+  }
+});
+
+var TypeCalculator;
+
+module.exports = TypeCalculator = React.createClass({
+  getInitialState: function() {
+    var defaultTypes = [];
+    return {
+      selectedFirstType: 'None',
+      selectedSecondType: 'None',
+      layout: 'Column',
+      strongAttack: defaultTypes,
+      weakAttack: defaultTypes,
+      strongDefense: defaultTypes,
+      weakDefense: defaultTypes,
+      immuneDefense: defaultTypes
+    };
+  },
+  updateValues: function(type, typeTwo) {
+      var self = this;
       $.ajax('types/getStats', {
         data: { ElementOne: type, ElementTwo: typeTwo },
         success: function(data) {
-          updateStrongAttack(data.StrongAttack);
-          updateWeakAttack(data.WeakAttack);
-          updateWeakDefense(data.WeakDefense);
-          updateImmunities(data.ImmuneDefense);
-          updateStrongDefense(data.StrongDefense);
-          changeStatus('Updated');
+          if(self.isMounted()) {
+            self.setState({
+              selectedFirstType: type,
+              selectedSecondType: typeTwo,
+              strongAttack: data.StrongAttack,
+              weakAttack: data.WeakAttack,
+              strongDefense: data.StrongDefense,
+              weakDefense: data.WeakDefense,
+              immuneDefense: data.ImmuneDefense
+            });
+          }
         }
       });
-    },
-    typeOneChanged = function(e) {
-      firstType = e.target.value || e.target.outerText;
-      updateValues(firstType, secondType);
-    },
-    typeTwoChanged = function(e) {
-      secondType = e.target.value || e.target.outerText;
-      updateValues(firstType, secondType);
-    },
-    changeStatus = function(status) {
-      React.render(<TypeDropdown firstTypeChanged={typeOneChanged} secondTypeChanged={typeTwoChanged} status={status} />, document.getElementById('typeDropdown'));
-      React.render(<TypesSection firstTypeChanged={typeOneChanged} secondTypeChanged={typeTwoChanged} selectedFirstType={firstType} selectedSecondType={secondType} />, document.getElementById('leftSection'));
-    };
+  },
+  firstTypeChanged: function(newValue) {
+    this.updateValues(newValue, this.state.selectedSecondType);
+  },
+  secondTypeChanged: function(newValue) {
+    this.updateValues(this.state.selectedFirstType, newValue);
+  },
+  layoutChanged: function(newLayout) {
+    this.setState({
+      layout: newLayout
+    });
+  },
+  render: function() {
+    var rightSection;
+    if(this.state.layout === 'Table') {
+      rightSection = <TypesTableLayout />
+    }
+    else if(this.state.layout === 'Column') {
+      rightSection = 
+        <TypesColumnLayout
+         strongAttack={this.state.strongAttack}
+         weakAttack={this.state.weakAttack}
+         strongDefense={this.state.strongDefense}
+         weakDefense={this.state.weakDefense}
+         immuneDefense={this.state.immuneDefense} />;
+    }
 
-    setupTypeDropdown();
+    return (
+      <div id="main">
+        <TypeDropdown 
+         types={this.state.types}
+         selectedFirstType={this.state.selectedFirstType}
+         selectedSecondType={this.state.selectedSecondType}
+         firstTypeChanged={this.firstTypeChanged}
+         secondTypeChanged={this.secondTypeChanged}  />
+         <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} />
+        <Sidebar
+         types={this.state.types}
+         selectedFirstType={this.state.selectedFirstType}
+         selectedSecondType={this.state.selectedSecondType}
+         firstTypeChanged={this.firstTypeChanged}
+         secondTypeChanged={this.secondTypeChanged} />
+         {rightSection}
+      </div>
+    );
+  }
+});
+
+$(document).ready(function() {
+  React.render(<TypeCalculator />, document.getElementById("mainContainer"));
 });

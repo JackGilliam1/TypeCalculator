@@ -31,3 +31,5 @@ fubu-content
 storyteller.cmd
 run_st.cmd
 node_modules/
+*.min.css
+*.css

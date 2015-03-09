@@ -1,29 +1,4 @@
 ﻿<viewdata model="TypeCalculator.Views.Home.HomeViewModel">
 <set Title="'I am ze title thingy'"/>
-
-<div id="leftSection" class="float-left selection-section left">
-  <span>
-    <div id="top" class="top">
-      <li class="selection-item selection-header">First</li>
-      <li class="clickable selection-item">None</li>
-    </div>
-    <div id="bottom" class="bottom">
-      <li class="selection-item selection-header">Second</li>
-      <li class="clickable selection-item selected">None</li>
-    </div>
-  </span>
-</div>
-<div id="rightSection" class="float-left clear-right right typesSection">
-  <div id="typeDropdown" class="centered at-top stretch">
-  </div>
-    <span class="attackSection strong inline column-fifth">
-    </span>
-    <span class="attackSection weak inline column-fifth">
-    </span>
-    <span class="defenseSection strong inline column-fifth">
-    </span>
-    <span class="defenseSection weak inline column-fifth">
-    </span>
-    <span class="defenseSection immune inline column-fifth">
-    </span>
+<div id="mainContainer">
 </div>

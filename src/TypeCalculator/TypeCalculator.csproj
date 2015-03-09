@@ -79,36 +79,57 @@
     </Compile>
     <Compile Include="Core\Type.cs" />
     <Compile Include="Global.asax.cs" />
-    <Compile Include="Views\Home\HomeEndpoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeCalculatorApplication.cs" />
     <Compile Include="TypeCalculatorFubuRegistry.cs" />
     <Compile Include="TypeCalculatorRegistry.cs" />
+    <Compile Include="Views\Home\HomeEndpoint.cs" />
     <Compile Include="Views\Home\HomeInputModel.cs" />
     <Compile Include="Views\Home\HomeViewModel.cs" />
     <Compile Include="Views\TypeExtensions.cs" />
-    <Compile Include="Views\TypesDictionary.cs" />
     <Compile Include="Views\Types\GetTypesRequest.cs" />
     <Compile Include="Views\Types\GetTypesResponse.cs" />
     <Compile Include="Views\Types\TypesEndpoint.cs" />
     <Compile Include="Views\Types\TypesRequest.cs" />
     <Compile Include="Views\Types\TypesResponse.cs" />
+    <Compile Include="Views\TypesDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app.js" />
-    <Content Include="Content\scripts\bundle.js" />
+    <Content Include="Content\scripts\typecalculator.jsx" />
+    <Content Include="Content\scripts\typecolumn.jsx" />
+    <Content Include="Content\scripts\typelistitem.jsx" />
+    <Content Include="Content\scripts\typesidebar.jsx" />
+    <Content Include="Content\scripts\typesidebarselect.jsx" />
     <Content Include="Content\scripts\util\jquery.js" />
-    <None Include="Content\scripts\typecalculator.jsx" />
-    <Content Include="Content\scripts\typessection.jsx" />
+    <Content Include="Content\styles\typecalculator.css">
+      <DependentUpon>typecalculator.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typecalculator.min.css">
+      <DependentUpon>typecalculator.css</DependentUpon>
+    </Content>
+    <Content Include="Content\scripts\typestablelayout.jsx" />
+    <Content Include="Content\scripts\typescolumnlayout.jsx" />
     <None Include="Content\styles\typecalculator.scss" />
+    <Content Include="Content\styles\typecolors.css">
+      <DependentUpon>typecolors.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typecolors.min.css">
+      <DependentUpon>typecolors.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typecolors.scss" />
+    <Content Include="Content\styles\typesidebar.css">
+      <DependentUpon>typesidebar.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typesidebar.min.css">
+      <DependentUpon>typesidebar.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typesidebar.scss" />
     <Content Include="Global.asax" />
     <Content Include="ripple.dependencies.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\scripts\typeelement.jsx" />
-    <Content Include="Content\scripts\typeslist.jsx" />
-    <Content Include="Content\styles\typecolors.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Shared\Application.spark" />
@@ -130,7 +151,7 @@
     <Folder Include="Content\scripts\lib\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\scripts\typeheader.jsx" />
+    <Content Include="Content\scripts\typedropdown.jsx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -165,4 +186,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <EmbeddedResource Include="pak-WebContent.zip" />
+  </ItemGroup>
 </Project>

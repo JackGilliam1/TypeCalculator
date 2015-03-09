@@ -92,8 +92,7 @@ namespace TypeCalculator.StoryTeller.Fixtures
 
         private IEnumerable<IWebElement> GetTypes(string sectionId, string type)
         {
-            var columnTypes = Driver.FindElement(By.Id(sectionId))
-                .FindElement(By.ClassName(type));
+            var columnTypes = Driver.FindElement(By.CssSelector("." + sectionId + "." + type));
             return columnTypes.FindElements(By.ClassName("type"));
         }
     }

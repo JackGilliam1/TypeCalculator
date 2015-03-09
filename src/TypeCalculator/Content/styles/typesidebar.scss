@@ -1,0 +1,38 @@
+﻿.sidebar-section {
+    display: inline-block;
+    background: white;
+    border: 1px solid black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.sidebar {
+    float:left;
+}
+
+.clickable {
+  &:hover {
+    cursor: pointer;
+    background: #6890f0;
+    color: white;
+  }
+
+  &.selected, &:checked {
+    cursor: default;
+    background: #AFFFE0;
+    color: black;
+  }
+}
+
+.selection-header {
+    background: whitesmoke;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: default;
+}
+
+.selection-item {
+    display: block;
+    padding: 3px;
+}
