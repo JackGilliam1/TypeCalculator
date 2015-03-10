@@ -1,6 +1,6 @@
 ﻿.stat-table {
     background: whitesmoke;
-    border-collapse: collapse;
+    border-spacing: 0px;
         
     .type-cell {
         border: 1px solid black;
@@ -31,13 +31,13 @@
           }
 
           &.vert-selected {
-              border-left: 2px solid darkgreen;
-              border-right: 2px solid darkgreen;
+              border-left: 1px solid darkgreen;
+              border-right: 1px solid darkgreen;
           }
 
           &.horiz-selected {
-              border-top: 2px solid darkgreen;
-              border-bottom: 2px solid darkgreen;
+              border-top: 1px solid darkgreen;
+              border-bottom: 1px solid darkgreen;
           }
 
           &.horiz-selected.vert-selected {
@@ -83,14 +83,9 @@
     }
 
     .cell {
-        border: 1px solid navy;
+        border: 1px solid #C4C4C4;
         padding: 6px;
         text-align: center;
         width: 50px;
-        &:hover {
-          cursor: pointer;
-          background: #6890f0;
-          color: white;
-        }
     }
 }
