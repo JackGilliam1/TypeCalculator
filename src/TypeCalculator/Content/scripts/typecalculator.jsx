@@ -5,44 +5,24 @@ var TypeDropdown = require('typedropdown.jsx');
 var Sidebar = require('typesidebar.jsx');
 var TypesColumnLayout = require('typescolumnlayout.jsx');
 var TypesTableLayout = require('typestablelayout.jsx');
-
-var SwitchLayoutsSection = React.createClass({
-  handleChange: function(onLayoutSwitch) {
-    return function(e) {
-      onLayoutSwitch(e.target.value);
-    };
-  },
-  render: function() {
-    var defaultLayout = this.props.defaultSelection || "Column";
-    return (
-      <span id="switchLayoutSection">
-        <select defaultValue={defaultLayout} onChange={this.handleChange(this.props.onLayoutSwitch)}>
-          <option value="Table">Table Layout</option>
-          <option value="Column">Column Layout</option>
-        </select>
-      </span>
-    );
-  }
-});
+var SwitchLayoutsSection = require('switchlayouts.jsx');
 
 var TypeCalculator;
 
 module.exports = TypeCalculator = React.createClass({
+  displayName: 'TypeCalculator',
   getInitialState: function() {
     var defaultTypes = [];
     return {
       selectedFirstType: 'None',
       selectedSecondType: 'None',
-      layout: 'Table',
+      layout: 'Column',
       strongAttack: defaultTypes,
       weakAttack: defaultTypes,
       strongDefense: defaultTypes,
       weakDefense: defaultTypes,
       immuneDefense: defaultTypes
     };
-  },
-  updateTableValues: function(type, typeTwo) {
-    var self = this;
   },
   updateValues: function(type, typeTwo) {
       var self = this;
@@ -69,6 +49,9 @@ module.exports = TypeCalculator = React.createClass({
   secondTypeChanged: function(newValue) {
     this.updateValues(this.state.selectedFirstType, newValue);
   },
+  firstAndSecondTypeChanged: function(typeOne, typeTwo) {
+    this.updateValues(typeOne, typeTwo);
+  },
   layoutChanged: function(newLayout) {
     this.setState({
       layout: newLayout
@@ -77,7 +60,10 @@ module.exports = TypeCalculator = React.createClass({
   render: function() {
     var rightSection;
     if(this.state.layout === 'Table') {
-      rightSection = <TypesTableLayout />
+      rightSection = <TypesTableLayout
+                       selectedFirstType={this.state.selectedFirstType}
+                       selectedSecondType={this.state.selectedSecondType}
+                       onCellClick={this.firstAndSecondTypeChanged} />
     }
     else if(this.state.layout === 'Column') {
       rightSection = 
@@ -97,13 +83,13 @@ module.exports = TypeCalculator = React.createClass({
          selectedSecondType={this.state.selectedSecondType}
          firstTypeChanged={this.firstTypeChanged}
          secondTypeChanged={this.secondTypeChanged}  />
-         <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} defaultSelection={this.state.layout} />
         <Sidebar
          types={this.state.types}
          selectedFirstType={this.state.selectedFirstType}
          selectedSecondType={this.state.selectedSecondType}
          firstTypeChanged={this.firstTypeChanged}
          secondTypeChanged={this.secondTypeChanged} />
+         <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} defaultSelection={this.state.layout} />
          {rightSection}
       </div>
     );

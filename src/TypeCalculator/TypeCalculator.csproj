@@ -77,12 +77,14 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Core\Type.cs" />
+    <Compile Include="Core\ElementType.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeCalculatorApplication.cs" />
     <Compile Include="TypeCalculatorFubuRegistry.cs" />
     <Compile Include="TypeCalculatorRegistry.cs" />
+    <Compile Include="Core\ElementStat.cs" />
+    <Compile Include="Core\ElementStats.cs" />
     <Compile Include="Views\Home\HomeEndpoint.cs" />
     <Compile Include="Views\Home\HomeInputModel.cs" />
     <Compile Include="Views\Home\HomeViewModel.cs" />
@@ -112,6 +114,7 @@
     </Content>
     <Content Include="Content\scripts\typestablelayout.jsx" />
     <Content Include="Content\scripts\typescolumnlayout.jsx" />
+    <Content Include="Content\scripts\switchlayouts.jsx" />
     <None Include="Content\styles\typecalculator.scss" />
     <Content Include="Content\styles\typecolors.css">
       <DependentUpon>typecolors.scss</DependentUpon>
@@ -120,6 +123,18 @@
       <DependentUpon>typecolors.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\typecolors.scss" />
+    <Content Include="Content\styles\typedropdown.css">
+      <DependentUpon>typedropdown.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typedropdown.min.css">
+      <DependentUpon>typedropdown.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typescolumnlayout.css">
+      <DependentUpon>typescolumnlayout.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typescolumnlayout.min.css">
+      <DependentUpon>typescolumnlayout.css</DependentUpon>
+    </Content>
     <Content Include="Content\styles\typesidebar.css">
       <DependentUpon>typesidebar.scss</DependentUpon>
     </Content>
@@ -127,11 +142,20 @@
       <DependentUpon>typesidebar.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\typesidebar.scss" />
+    <Content Include="Content\styles\typestablelayout.css">
+      <DependentUpon>typestablelayout.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\typestablelayout.min.css">
+      <DependentUpon>typestablelayout.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="ripple.dependencies.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\styles\typestablelayout.scss" />
+    <Content Include="Content\styles\typescolumnlayout.scss" />
+    <Content Include="Content\styles\typedropdown.scss" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Shared\Application.spark" />

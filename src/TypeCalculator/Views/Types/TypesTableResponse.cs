@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TypeCalculator.Core;
 
 namespace TypeCalculator.Views.Types
 {

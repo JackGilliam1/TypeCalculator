@@ -1,0 +1,96 @@
+﻿.stat-table {
+    background: whitesmoke;
+    border-collapse: collapse;
+        
+    .type-cell {
+        border: 1px solid black;
+        border-left: 0px;
+        font-weight: bold;
+        cursor: default;
+    }
+
+    .body-cell {
+        cursor: pointer;
+
+        &.selected {
+          cursor: default;
+          background: #AFFFE0;
+          color: black;
+
+          &.strong {
+              background: #FF8080;
+              color: white;
+          }
+          &.weak {
+              background: #FFFFD0;
+              color: black;
+          }
+          &.immune {
+              background: darkgray;
+              color: white;
+          }
+
+          &.vert-selected {
+              border-left: 2px solid darkgreen;
+              border-right: 2px solid darkgreen;
+          }
+
+          &.horiz-selected {
+              border-top: 2px solid darkgreen;
+              border-bottom: 2px solid darkgreen;
+          }
+
+          &.horiz-selected.vert-selected {
+            border: 0px;
+          }
+        }
+
+        &.strong {
+            background: #FF0000;
+            color: white;
+        }
+        &.weak {
+            background: #FFFFA0;
+            color: black;
+        }
+        &.immune {
+            background: #808080;
+            color: white;
+        }
+    }
+
+    .body-row {
+        &:hover {
+          cursor: pointer;
+          background: #6890f0;
+          color: white;
+
+          .body-cell {
+              &.strong {
+                  background: #FF8080;
+                  color: white;
+              }
+              &.weak {
+                  background: #FFFFD0;
+                  color: black;
+              }
+              &.immune {
+                  background: darkgray;
+                  color: white;
+              }
+          }
+        }
+    }
+
+    .cell {
+        border: 1px solid navy;
+        padding: 6px;
+        text-align: center;
+        width: 50px;
+        &:hover {
+          cursor: pointer;
+          background: #6890f0;
+          color: white;
+        }
+    }
+}

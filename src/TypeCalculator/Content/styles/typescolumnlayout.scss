@@ -1,0 +1,32 @@
+﻿.type-column {
+  display: inline-block;
+  margin: 1px;
+  border: 1px solid black;
+  vertical-align: top;
+  background: white;
+  text-align: center;
+  font-size: 32px;
+
+  h2 {
+    padding: 10px;
+  }
+
+  .type {
+    color: white;
+    display: block;
+    padding-bottom: 2px;
+  }
+
+  .types {
+      display: block;
+      border-top: 1px solid black;
+  }
+
+  .count {
+    color: black;
+    display: block;
+    background: whitesmoke;
+    border-bottom: 1px solid black;
+    padding-bottom: 2px;
+  }
+}

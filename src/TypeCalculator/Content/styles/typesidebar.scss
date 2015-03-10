@@ -1,38 +1,40 @@
-﻿.sidebar-section {
-    display: inline-block;
-    background: white;
-    border: 1px solid black;
-    overflow: hidden;
-    text-align: center;
-}
+﻿
 
 .sidebar {
     float:left;
-}
 
-.clickable {
-  &:hover {
-    cursor: pointer;
-    background: #6890f0;
-    color: white;
-  }
+    .sidebar-section {
+        display: inline-block;
+        background: white;
+        border: 1px solid black;
+        overflow: hidden;
+        text-align: center;
+    }
 
-  &.selected, &:checked {
-    cursor: default;
-    background: #AFFFE0;
-    color: black;
-  }
-}
+    .clickable {
+      &:hover {
+        cursor: pointer;
+        background: #6890f0;
+        color: white;
+      }
 
-.selection-header {
-    background: whitesmoke;
-    border-bottom: 1px solid black;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: default;
-}
+      &.selected, &:checked {
+        cursor: default;
+        background: #AFFFE0;
+        color: black;
+      }
+    }
 
-.selection-item {
-    display: block;
-    padding: 3px;
+    .selection-header {
+        background: whitesmoke;
+        border-bottom: 1px solid black;
+        font-weight: bold;
+        font-size: 20px;
+        cursor: default;
+    }
+
+    .selection-item {
+        display: block;
+        padding: 3px;
+    }
 }
