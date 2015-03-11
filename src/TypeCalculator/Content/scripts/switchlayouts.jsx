@@ -29,7 +29,7 @@ module.exports =  React.createClass({
 
     return (
       <div id="switchLayoutSection">
-        <select defaultValue={defaultLayout} onChange={this.handleChange(this.props.onLayoutSwitch)}>
+        <select defaultValue={defaultLayout} size={2} onChange={this.handleChange(this.props.onLayoutSwitch)}>
           {layoutOptions}
         </select>
       </div>

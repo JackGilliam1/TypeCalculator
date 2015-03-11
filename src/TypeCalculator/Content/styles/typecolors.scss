@@ -1,75 +1,81 @@
-﻿.none {
-  background: #68A090;
-}
+﻿@mixin typeColors() {
+    .type {
+        color: white;
+    }
 
-.bug {
-  background: #A8B820;
-}
+    .none {
+      background: #68A090;
+    }
 
-.dark {
-  background: #705848;
-}
+    .bug {
+      background: #A8B820;
+    }
 
-.dragon {
-  background: #7038F8;
-}
+    .dark {
+      background: #705848;
+    }
 
-.electric {
-  background: #F8D030;
-}
+    .dragon {
+      background: #7038F8;
+    }
 
-.fairy {
-  background: #EE99AC;
-}
+    .electric {
+      background: #F8D030;
+    }
 
-.fighting {
-  background: #C03028;
-}
+    .fairy {
+      background: #EE99AC;
+    }
 
-.fire {
-  background: #F08030;
-}
+    .fighting {
+      background: #C03028;
+    }
 
-.flying {
-  background: #A890F0;
-}
+    .fire {
+      background: #F08030;
+    }
 
-.ghost {
-  background: #7038F8;
-}
+    .flying {
+      background: #A890F0;
+    }
 
-.grass {
-  background: #78C850;
-}
+    .ghost {
+      background: #7038F8;
+    }
 
-.ground {
-  background: #E0C068;
-}
+    .grass {
+      background: #78C850;
+    }
 
-.ice {
-  background: #98D8D8;
-}
+    .ground {
+      background: #E0C068;
+    }
 
-.normal {
-  background: #A8A878;
-}
+    .ice {
+      background: #98D8D8;
+    }
 
-.poison {
-  background: #A040A0;
-}
+    .normal {
+      background: #A8A878;
+    }
 
-.psychic {
-  background: #F85888;
-}
+    .poison {
+      background: #A040A0;
+    }
 
-.rock {
-  background: #B8A038;
-}
+    .psychic {
+      background: #F85888;
+    }
 
-.steel {
-  background: #B8B8D0;
-}
+    .rock {
+      background: #B8A038;
+    }
 
-.water {
-  background: #6890F0;
+    .steel {
+      background: #B8B8D0;
+    }
+
+    .water {
+      background: #6890F0;
+    }
 }

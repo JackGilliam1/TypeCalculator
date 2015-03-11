@@ -1,13 +1,11 @@
-﻿var React = require('react');
-var $ = require('jquery');
-
-var TypeDropdown = require('typedropdown.jsx');
-var Sidebar = require('typesidebar.jsx');
-var TypesColumnLayout = require('typescolumnlayout.jsx');
-var TypesTableLayout = require('typestablelayout.jsx');
-var SwitchLayoutsSection = require('switchlayouts.jsx');
-
-var TypeCalculator;
+﻿var React = require('react'),
+    $ = require('jquery'),
+    TypeDropdown = require('typedropdown.jsx'),
+    Sidebar = require('typesidebar.jsx'),
+    TypesColumnLayout = require('typescolumnlayout.jsx'),
+    TypesTableLayout = require('tablelayout/typestablelayout.jsx'),
+    SwitchLayoutsSection = require('switchlayouts.jsx'),
+    TypeCalculator;
 
 module.exports = TypeCalculator = React.createClass({
   displayName: 'TypeCalculator',
@@ -16,7 +14,7 @@ module.exports = TypeCalculator = React.createClass({
     return {
       selectedFirstType: 'None',
       selectedSecondType: 'None',
-      layout: 'Column',
+      layout: 'Table',
       strongAttack: defaultTypes,
       weakAttack: defaultTypes,
       strongDefense: defaultTypes,

@@ -12,12 +12,12 @@ namespace TypeCalculator.Views
         IList<ElementType> GetWeakDefense(ElementType type);
         IList<ElementType> GetImmuneDefense(ElementType type);
         IList<ElementType> GetStrongDefense(ElementType type);
-        IDictionary<ElementType, IDictionary<ElementType, double>> GetStats();
+        IList<ElementStats> GetStats();
     }
 
     public class TypesDictionary : ITypesDictionary
     {
-        private IDictionary<ElementType, IDictionary<ElementType, double>> _statsDictionary;
+        private IList<ElementStats> _elementStats;
         private readonly IDictionary<ElementType, IList<ElementType>> _strongAttack;
         private readonly IDictionary<ElementType, IList<ElementType>> _weakAttack;
         private readonly IDictionary<ElementType, IList<ElementType>> _immuneDefense; 
@@ -59,18 +59,26 @@ namespace TypeCalculator.Views
             return GetFrom(_strongDefense, type);
         }
 
-        public IDictionary<ElementType, IDictionary<ElementType, double>> GetStats()
+        public IList<ElementStats> GetStats()
         {
-            if (_statsDictionary != null)
+            if (_elementStats != null)
             {
-                return _statsDictionary;
+                return _elementStats;
             }
-            _statsDictionary = new Dictionary<ElementType, IDictionary<ElementType, double>>();
+            _elementStats = new List<ElementStats>();
 
-            var elementTypes = ((ElementType[]) Enum.GetValues(typeof (ElementType))).Where(x => !x.Equals(ElementType.None)).ToList();
+            var elementTypes = ((ElementType[]) Enum.GetValues(typeof (ElementType)))
+                .Where(x => !x.Equals(ElementType.None))
+                .ToList();
 
-            elementTypes.Each(x => _statsDictionary.Add(x, new Dictionary<ElementType, double>()));
+            var tempDictionary = new Dictionary<ElementType, ElementStats>();
 
+            elementTypes.Each(x => tempDictionary.Add(x, new ElementStats(x)));
+
+            var strongDefenseMultiplier = new MultiplierStrength(0.5, "Weak");
+            var weakDefenseMultiplier = new MultiplierStrength(2, "Strong");
+            var immuneDefenseMultiplier = new MultiplierStrength(0, "Immune");
+            var normalMultiplier = new MultiplierStrength(1, "");
             foreach (var elementType in elementTypes)
             {
                 var strongDefenses = GetStrongDefense(elementType);
@@ -78,30 +86,30 @@ namespace TypeCalculator.Views
                 var immuneDefenses = GetImmuneDefense(elementType);
                 foreach (var strongDefense in strongDefenses)
                 {
-                    _statsDictionary[strongDefense].Add(elementType, 0.5);
+                    tempDictionary[strongDefense].Stats.Add(new ElementStat(elementType, strongDefenseMultiplier));
                 }
 
-                foreach(var weakDefense in weakDefenses)
+                foreach (var weakDefense in weakDefenses)
                 {
-                    _statsDictionary[weakDefense].Add(elementType, 2);
+                    tempDictionary[weakDefense].Stats.Add(new ElementStat(elementType, weakDefenseMultiplier));
                 }
 
                 foreach (var immuneDefense in immuneDefenses)
                 {
-                    _statsDictionary[immuneDefense].Add(elementType, 0);
+                    tempDictionary[immuneDefense].Stats.Add(new ElementStat(elementType, immuneDefenseMultiplier));
                 }
 
                 foreach (var elementTypeTwo in elementTypes)
                 {
-                    var dictionary = _statsDictionary[elementTypeTwo];
-                    if (!dictionary.ContainsKey(elementType))
+                    var stats = tempDictionary[elementTypeTwo].Stats;
+                    if (!stats.Any(x => x.ElementType.Equals(elementType.ToString())))
                     {
-                        dictionary.Add(elementType, 1);
+                        stats.Add(new ElementStat(elementType, normalMultiplier));
                     }
                 }
             }
 
-            return _statsDictionary;
+            return _elementStats = tempDictionary.Values.ToList();
         }
 
         private static IList<ElementType> GetFrom(IDictionary<ElementType, IList<ElementType>> typeDictionary, ElementType type)
@@ -217,6 +225,18 @@ namespace TypeCalculator.Views
             _immuneDefense.Add(ElementType.Ground, ElementType.Electric);
             _immuneDefense.Add(ElementType.Normal, ElementType.Ghost);
             _immuneDefense.Add(ElementType.Steel, ElementType.Poison);
+        }
+    }
+
+    public class MultiplierStrength
+    {
+        public double Multiplier { get; private set; }
+        public string Strength { get; private set; }
+
+        public MultiplierStrength(double multiplier, string strength)
+        {
+            Multiplier = multiplier;
+            Strength = strength;
         }
     }
 }

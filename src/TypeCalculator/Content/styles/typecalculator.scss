@@ -1,6 +1,4 @@
-@import 'typecolors';
 @import 'typesidebar';
-@import 'typestablelayout';
 @import 'typescolumnlayout';
 @import 'typedropdown';
 
@@ -9,4 +7,6 @@ body {
 }
 
 .main-section {
+    display: inline-block;
+    margin: 1px;
 }

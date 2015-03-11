@@ -1,43 +1,62 @@
-﻿.stat-table {
+﻿@import 'typecolors';
+
+@mixin tableMultiplierColorsSelected() {
+  &.strong {
+      background: #FF8080;
+      color: white;
+  }
+  &.weak {
+      background: #FFFFD0;
+      color: black;
+  }
+  &.immune {
+      background: darkgray;
+      color: white;
+  }
+}
+
+$selectedBorder: 1px solid darkgreen;
+
+@mixin tableMultiplierColorsUnselected() {
+    &.strong {
+        background: #FF0000;
+        color: white;
+    }
+    &.weak {
+        background: #FFFFA0;
+        color: black;
+    }
+    &.immune {
+        background: #808080;
+        color: white;
+    }
+}
+
+$typeBorder: 2px solid black;
+
+.stat-table {
     background: whitesmoke;
     border-spacing: 0px;
-        
-    .type-cell {
-        border: 1px solid black;
-        border-left: 0px;
-        font-weight: bold;
-        cursor: default;
-    }
+    border: $typeBorder;
+
+    @include typeColors();
 
     .body-cell {
-        cursor: pointer;
-
         &.selected {
           cursor: default;
           background: #AFFFE0;
           color: black;
 
-          &.strong {
-              background: #FF8080;
-              color: white;
-          }
-          &.weak {
-              background: #FFFFD0;
-              color: black;
-          }
-          &.immune {
-              background: darkgray;
-              color: white;
-          }
+          @include tableMultiplierColorsSelected();
 
           &.vert-selected {
-              border-left: 1px solid darkgreen;
-              border-right: 1px solid darkgreen;
+              border-left: $selectedBorder;
+              border-right: $selectedBorder;
           }
 
           &.horiz-selected {
-              border-top: 1px solid darkgreen;
-              border-bottom: 1px solid darkgreen;
+              border-top: $selectedBorder;
+              border-bottom: $selectedBorder;
           }
 
           &.horiz-selected.vert-selected {
@@ -45,47 +64,73 @@
           }
         }
 
-        &.strong {
-            background: #FF0000;
-            color: white;
-        }
-        &.weak {
-            background: #FFFFA0;
-            color: black;
-        }
-        &.immune {
-            background: #808080;
-            color: white;
-        }
+        @include tableMultiplierColorsUnselected();
     }
 
-    .body-row {
-        &:hover {
-          cursor: pointer;
-          background: #6890f0;
-          color: white;
-
-          .body-cell {
-              &.strong {
-                  background: #FF8080;
-                  color: white;
-              }
-              &.weak {
-                  background: #FFFFD0;
-                  color: black;
-              }
-              &.immune {
-                  background: darkgray;
-                  color: white;
-              }
-          }
-        }
-    }
+    $hoverBackgroundColor: #6890f0;
+    $hoverBorder: 1px solid #0F0E77;
 
     .cell {
-        border: 1px solid #C4C4C4;
         padding: 6px;
         text-align: center;
         width: 50px;
+        &.body-cell {
+            border: 1px solid #C4C4C4;
+        }
+    }
+
+    .hover {
+      .body-cell, &.body-cell {
+        color: white;
+        background: $hoverBackgroundColor;
+      }
+      
+      &.body-row {
+        .body-cell {
+            border-top: $hoverBorder;
+            border-bottom: $hoverBorder;
+            &.hover {
+                border: 0px;
+            }
+        }
+      }
+
+      &.body-cell {
+        cursor: pointer;
+
+        @include tableMultiplierColorsSelected();
+        
+        border-left: $hoverBorder;
+        border-right: $hoverBorder;
+      }
+    }
+
+    .row {
+        .type-cell {
+            font-weight: bold;
+            cursor: default;
+        }
+
+        &.body-row {
+            .type-cell {
+                border-right: $typeBorder;
+            }
+
+            &:not(:last-of-type) {
+                .type-cell {
+                    border-bottom: $typeBorder;
+                }
+            }
+        }
+
+        &.header-row {
+            .type-cell {
+                border-bottom: $typeBorder;
+
+                &:not(:last-of-type) {
+                    border-right: $typeBorder;
+                }
+            }
+        }
     }
 }

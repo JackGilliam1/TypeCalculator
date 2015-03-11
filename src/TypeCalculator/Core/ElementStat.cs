@@ -1,14 +1,16 @@
+using TypeCalculator.Views;
+
 namespace TypeCalculator.Core
 {
     public class ElementStat
     {
         public string ElementType { get; private set; }
-        public double Multiplier { get; private set; }
+        public MultiplierStrength MultiplierStrength { get; private set; }
 
-        public ElementStat(string elementType, double multiplier)
+        public ElementStat(ElementType elementType, MultiplierStrength multiplierStrength)
         {
-            ElementType = elementType;
-            Multiplier = multiplier;
+            ElementType = elementType.ToString();
+            MultiplierStrength = multiplierStrength;
         }
     }
 }

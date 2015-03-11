@@ -123,24 +123,8 @@ namespace TypeCalculator.Views.Types
         {
             return new TypesTableResponse
             {
-                Stats = ConvertToElementStats(_typesDictionary.GetStats()),
+                Stats = _typesDictionary.GetStats(),
             };
-        }
-
-        private IList<ElementStats> ConvertToElementStats(
-            IEnumerable<KeyValuePair<ElementType, IDictionary<ElementType, double>>> stats)
-        {
-            var elementStats = new List<ElementStats>();
-            foreach (var stat in stats)
-            {
-                var elementStat = new ElementStats(stat.Key.ToString());
-                foreach (var multipliers in stat.Value)
-                {
-                    elementStat.Stats.Add(new ElementStat(multipliers.Key.ToString(), multipliers.Value));
-                }
-                elementStats.Add(elementStat);
-            }
-            return elementStats;
         }
     }
 }

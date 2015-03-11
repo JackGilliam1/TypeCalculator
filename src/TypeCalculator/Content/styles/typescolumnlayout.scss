@@ -1,4 +1,6 @@
-﻿.type-column {
+﻿@import 'typecolors';
+
+.type-column {
   display: inline-block;
   margin: 1px;
   border: 1px solid black;
@@ -11,8 +13,9 @@
     padding: 10px;
   }
 
+  @include typeColors();
+
   .type {
-    color: white;
     display: block;
     padding-bottom: 2px;
   }

@@ -63,6 +63,12 @@
       <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\Mongodb\lib\net40\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\Mongodb\lib\net40\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Spark">
       <HintPath>..\packages\Spark\lib\NET40\Spark.dll</HintPath>
     </Reference>
@@ -112,9 +118,12 @@
     <Content Include="Content\styles\typecalculator.min.css">
       <DependentUpon>typecalculator.css</DependentUpon>
     </Content>
-    <Content Include="Content\scripts\typestablelayout.jsx" />
+    <Content Include="Content\scripts\tablelayout\typestablelayout.jsx" />
     <Content Include="Content\scripts\typescolumnlayout.jsx" />
     <Content Include="Content\scripts\switchlayouts.jsx" />
+    <Content Include="Content\scripts\tablelayout\tableheaderrows.jsx" />
+    <Content Include="Content\scripts\tablelayout\tablebodyrows.jsx" />
+    <Content Include="Content\scripts\tablelayout\emptytable.jsx" />
     <None Include="Content\styles\typecalculator.scss" />
     <Content Include="Content\styles\typecolors.css">
       <DependentUpon>typecolors.scss</DependentUpon>
