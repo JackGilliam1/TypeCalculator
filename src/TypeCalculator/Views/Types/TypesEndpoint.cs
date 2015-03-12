@@ -29,12 +29,14 @@ namespace TypeCalculator.Views.Types
 
             var typeOne = request.ElementOne;
             var typeTwo = request.ElementTwo;
-            var strongDefense = _typesDictionary.GetStrongDefense(typeOne)
-                .Concat(_typesDictionary.GetStrongDefense(typeTwo))
+            var typeOneAttributes = _typesDictionary.GetAttributes(typeOne);
+            var typeTwoAttributes = _typesDictionary.GetAttributes(typeTwo);
+            var strongDefense = typeOneAttributes.StrongDefense
+                .Concat(typeTwoAttributes.StrongDefense)
                 .GroupBy(x => x)
                 .ToList();
-            var weakDefense = _typesDictionary.GetWeakDefense(typeOne)
-                .Concat(_typesDictionary.GetWeakDefense(typeTwo))
+            var weakDefense = typeOneAttributes.WeakDefense
+                .Concat(typeTwoAttributes.WeakDefense)
                 .GroupBy(x => x)
                 .ToList();
 
@@ -42,8 +44,8 @@ namespace TypeCalculator.Views.Types
                 .Select(x => x.Key)
                 .ToList();
 
-            var immuneDefense = _typesDictionary.GetImmuneDefense(typeOne)
-                .Concat(_typesDictionary.GetImmuneDefense(typeTwo))
+            var immuneDefense = typeOneAttributes.ImmuneDefense
+                .Concat(typeTwoAttributes.ImmuneDefense)
                 .Distinct();
 
             weakDefense = weakDefense.Where(x => !commonElements.Contains(x.Key) && !immuneDefense.Contains(x.Key)).ToList();
@@ -52,8 +54,8 @@ namespace TypeCalculator.Views.Types
 
             return new TypesResponse
             {
-                StrongAttack = GetMultiTypeAttackStats(typeOne, typeTwo, _typesDictionary.GetStrongAttack),
-                WeakAttack = GetMultiTypeAttackStats(typeOne, typeTwo, _typesDictionary.GetWeakAttack),
+                StrongAttack = GetMultiTypeAttackStats(typeOne, typeTwo, typeOneAttributes.StrongAttack, typeTwoAttributes.StrongAttack),
+                WeakAttack = GetMultiTypeAttackStats(typeOne, typeTwo, typeOneAttributes.WeakAttack, typeTwoAttributes.WeakAttack),
                 StrongDefense = GetMultiTypeStats(strongDefense),
                 WeakDefense = GetMultiTypeStats(weakDefense),
                 ImmuneDefense = immuneDefense.Select(x => x.ToString()).ToList()
@@ -62,34 +64,35 @@ namespace TypeCalculator.Views.Types
 
         private TypesResponse GetStatsFor(ElementType type)
         {
+            var attributes = _typesDictionary.GetAttributes(type);
             return new TypesResponse
             {
-                StrongAttack = _typesDictionary.GetStrongAttack(type).Select(x => x.ToString()),
-                WeakDefense = _typesDictionary.GetWeakDefense(type).Select(x => x.ToString()),
-                ImmuneDefense = _typesDictionary.GetImmuneDefense(type).Select(x => x.ToString()),
-                StrongDefense = _typesDictionary.GetStrongDefense(type).Select(x => x.ToString()),
-                WeakAttack = _typesDictionary.GetWeakAttack(type).Select(x => x.ToString())
+                StrongAttack = attributes.StrongAttack.Select(x => x.ToString()),
+                WeakAttack = attributes.WeakAttack.Select(x => x.ToString()),
+                StrongDefense = attributes.StrongDefense.Select(x => x.ToString()),
+                WeakDefense = attributes.WeakDefense.Select(x => x.ToString()),
+                ImmuneDefense = attributes.ImmuneDefense.Select(x => x.ToString()),
             };
         }
 
         private IEnumerable<string> GetMultiTypeAttackStats(ElementType typeOne, ElementType typeTwo,
-            Func<ElementType, IEnumerable<ElementType>> attackFunc)
+            ICollection<ElementType> typeOneAttack, ICollection<ElementType> typeTwoAttack)
         {
-            var attackOne = attackFunc(typeOne).Select(x => x.ToString()).ToList();
-            var attackTwo = attackFunc(typeTwo).Select(x => x.ToString()).ToList();
-
-            return attackOne.Concat(attackTwo).Distinct().Select(x =>
-            {
-                if (attackOne.Contains(x) && attackTwo.Contains(x))
+            return typeOneAttack
+                .Concat(typeTwoAttack)
+                .Distinct()
+                .Select(x =>
                 {
-                    return x;
-                }
-                if (attackOne.Contains(x))
-                {
-                    return x + " (" + typeOne.ToString() + ")";
-                }
-                return x + " (" + typeTwo.ToString() + ")";
-            }); 
+                    if (typeOneAttack.Contains(x) && typeTwoAttack.Contains(x))
+                    {
+                        return x.ToString();
+                    }
+                    if (typeOneAttack.Contains(x))
+                    {
+                        return x + " (" + typeOne.ToString() + ")";
+                    }
+                    return x + " (" + typeTwo.ToString() + ")";
+                }); 
         }
 
         private IEnumerable<string> GetMultiTypeStats(IEnumerable<IGrouping<ElementType, ElementType>> typeGroups)

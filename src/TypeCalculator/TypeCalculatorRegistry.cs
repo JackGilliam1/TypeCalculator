@@ -1,6 +1,9 @@
+using Bottles;
 using StructureMap.Configuration.DSL;
+using TypeCalculator.Core;
 using TypeCalculator.Views;
 using TypeCalculator.Views.Home;
+using TypeCalculator.Views.Types;
 
 namespace TypeCalculator
 {
@@ -12,12 +15,12 @@ namespace TypeCalculator
 			
             // Sets up the default "IFoo is Foo" naming convention
             // for auto-registration within this assembly
-            Scan(x => {
-                x.AssemblyContainingType<HomeInputModel>();
-                x.WithDefaultConventions();
-            });
+            Scan(x => x.AssemblyContainingType<HomeInputModel>());
 
-		    For<ITypesDictionary>().Use<TypesDictionary>();
+		    For<IActivator>().Add<InitialStatsActivator>();
+            For<ITypesDictionary>().Use<TypesDictionary>();
+            ForSingletonOf<ITypeCalculatorDatabase>().Use<MongoDbDatabase>();
+		    For<IElementTypesDbConnection>().Use<ElementTypesDbConnection>();
 		}
 	}
 }

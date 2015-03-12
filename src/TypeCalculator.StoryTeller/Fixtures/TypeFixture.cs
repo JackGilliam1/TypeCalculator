@@ -48,7 +48,7 @@ namespace TypeCalculator.StoryTeller.Fixtures
                 {
                     return Driver.FindElement(By.Id("#statusBadge")).Text == status;
                 }
-                catch (Exception e)
+                catch
                 {
                 }
                 return false;

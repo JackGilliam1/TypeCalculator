@@ -84,6 +84,9 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Core\ElementType.cs" />
+    <Compile Include="Core\ElementTypeAttributes.cs" />
+    <Compile Include="Core\MongoDbDatabase.cs" />
+    <Compile Include="Core\MongoDbSettings.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeCalculatorApplication.cs" />
@@ -94,9 +97,11 @@
     <Compile Include="Views\Home\HomeEndpoint.cs" />
     <Compile Include="Views\Home\HomeInputModel.cs" />
     <Compile Include="Views\Home\HomeViewModel.cs" />
+    <Compile Include="Views\ElementTypesDbConnection.cs" />
     <Compile Include="Views\TypeExtensions.cs" />
     <Compile Include="Views\Types\GetTypesRequest.cs" />
     <Compile Include="Views\Types\GetTypesResponse.cs" />
+    <Compile Include="Views\InitialStatsActivator.cs" />
     <Compile Include="Views\Types\TypesEndpoint.cs" />
     <Compile Include="Views\Types\TypesRequest.cs" />
     <Compile Include="Views\Types\TypesResponse.cs" />
