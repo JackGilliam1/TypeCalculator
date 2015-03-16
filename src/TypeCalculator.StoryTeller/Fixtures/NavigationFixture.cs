@@ -16,7 +16,7 @@ namespace TypeCalculator.StoryTeller.Fixtures
         [FormatAs("Should see type input box")]
         public bool ShouldSeeTypeInputBox()
         {
-            return Driver.FindElement(By.Id("typeDropdown")).Displayed;
+            return Driver.FindElement(By.Id("typeDropdown")).Displayed || Driver.FindElement(By.Id("switchLayoutSection")).Displayed;
         }
     }
 }

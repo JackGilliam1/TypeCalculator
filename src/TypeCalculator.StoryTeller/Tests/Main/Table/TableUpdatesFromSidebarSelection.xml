@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Test name="TableUpdatesFromSidebarSelection" lifecycle="Acceptance">
+  <Navigation>
+    <NavigateHome isStep="True" />
+    <ShouldSeeTypeInputBox isStep="True" />
+  </Navigation>
+  <Type>
+    <SwitchLayouts isStep="True">
+      <SwitchLayouts>
+        <SwitchToLayout isStep="True" layout="Table" />
+      </SwitchLayouts>
+    </SwitchLayouts>
+    <Sidebar isStep="True">
+      <Sidebar>
+        <SelectType isStep="True" selectType="Bug" />
+        <SelectTypeTwo isStep="True" selectType="Flying" />
+      </Sidebar>
+    </Sidebar>
+    <TableLayout isStep="True">
+      <TableLayout>
+        <TypeCombinationShouldBeSelected isStep="True" typeOne="Bug" typeTwo="Flying" />
+      </TableLayout>
+    </TableLayout>
+    <Sidebar isStep="True">
+      <Sidebar>
+        <SelectType isStep="True" selectType="Normal" />
+        <SelectTypeTwo isStep="True" selectType="Psychic" />
+      </Sidebar>
+    </Sidebar>
+    <TableLayout isStep="True">
+      <TableLayout>
+        <TypeCombinationShouldBeSelected isStep="True" typeOne="Normal" typeTwo="Psychic" />
+      </TableLayout>
+    </TableLayout>
+  </Type>
+</Test>

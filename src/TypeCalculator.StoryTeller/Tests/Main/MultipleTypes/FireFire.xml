@@ -7,7 +7,11 @@
   <Type>
     <SelectType isStep="True" selectType="Fire" />
     <SelectTypeTwo isStep="True" selectType="Fire" />
-    <WaitForStatus isStep="True" status="Updated" />
+    <SwitchLayouts isStep="True">
+      <SwitchLayouts>
+        <SwitchToLayout isStep="True" layout="Column" />
+      </SwitchLayouts>
+    </SwitchLayouts>
     <StrengthsShouldContain isStep="True">
       <Rows>
         <row isStep="True" expected="Grass" />

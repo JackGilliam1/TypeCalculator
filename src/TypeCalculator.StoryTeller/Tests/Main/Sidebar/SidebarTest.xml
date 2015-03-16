@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Test name="SidebarTest" lifecycle="Acceptance">
+  <Navigation>
+    <NavigateHome isStep="True" />
+    <ShouldSeeTypeInputBox isStep="True" />
+  </Navigation>
+  <Type>
+    <SelectType isStep="True" selectType="Bug" />
+    <SelectTypeTwo isStep="True" selectType="None" />
+    <Sidebar isStep="True">
+      <Sidebar>
+        <FirstTypeSelectedShouldBe isStep="True" return="Bug" />
+        <SecondTypeSelectedShouldBe isStep="True" return="None" />
+      </Sidebar>
+    </Sidebar>
+  </Type>
+</Test>

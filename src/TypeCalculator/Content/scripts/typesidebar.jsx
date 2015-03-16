@@ -30,22 +30,23 @@ module.exports = React.createClass({
   handleClickFor: function(onClick, selectedTypePropertyName) {
     var self = this;
     return function(event) {
-      onClick(event.target.outerText);
+      onClick(event.target.outerText || event.target.innerHTML);
     };
   },
   toListItems: function(types, onClick, selectedType) {
     var lowerSelected = selectedType.toLowerCase();
     return types.map(function(type) {
-                var className = "clickable selection-item",
+                var className = 'clickable selection-item',
                     lowerType = type.toLowerCase();
                 if(lowerType === lowerSelected) {
-                   className += " selected";
+                   className += ' selected';
                 }
-                return <li key={type} className={className} onClick={onClick} value={lowerType}>{type}</li>;
+                className += ' ' + lowerType;
+                return <a key={type} className={className} href="#" onClick={onClick} value={lowerType}>{type}</a>;
               });
   },
   render: function() {
-    var defaultElement = <li key="None" className="clickable selection-item selected" value="none">None</li>,
+    var defaultElement = <a key="None" href="#" className="clickable selection-item selected" value="none">None</a>,
         firstElements = [defaultElement],
         secondElements = [defaultElement],
         types = this.state.types,
@@ -60,11 +61,11 @@ module.exports = React.createClass({
     }
     return (
       <span id="sidebarList" className="sidebar">
-        <div className="sidebar-section">
+        <div id="typeOneSidebarSelect" className="sidebar-section">
           <li className="selection-item selection-header">First</li>
           {firstElements}
         </div>
-        <div className="sidebar-section">
+        <div id="typeTwoSidebarSelect" className="sidebar-section">
           <li className="selection-item selection-header">Second</li>
           {secondElements}
         </div>

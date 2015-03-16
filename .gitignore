@@ -33,3 +33,5 @@ run_st.cmd
 node_modules/
 *.min.css
 *.css
+src/*-results/
+*.stresult

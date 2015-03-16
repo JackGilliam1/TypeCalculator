@@ -105,7 +105,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumSelectionValuesAttribute.cs" />
     <Compile Include="Fixtures\NavigationFixture.cs" />
+    <Compile Include="Fixtures\SidebarFixture.cs" />
+    <Compile Include="Fixtures\SwitchLayoutsFixture.cs" />
+    <Compile Include="Fixtures\TableLayoutFixture.cs" />
     <Compile Include="Fixtures\TypeFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeCalculatorSystem.cs" />

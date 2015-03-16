@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<Test name="SidebarUpdatesFromTableSelection" lifecycle="Acceptance">
+  <Navigation>
+    <NavigateHome isStep="True" />
+    <ShouldSeeTypeInputBox isStep="True" />
+  </Navigation>
+  <Type>
+    <SwitchLayouts isStep="True">
+      <SwitchLayouts>
+        <SwitchToLayout isStep="True" layout="Table" />
+      </SwitchLayouts>
+    </SwitchLayouts>
+    <TableLayout isStep="True">
+      <TableLayout>
+        <SelectTypeCombination isStep="True" typeOne="Ice" typeTwo="Flying" />
+        <TypeCombinationShouldBeSelected isStep="True" typeOne="Ice" typeTwo="Flying" />
+      </TableLayout>
+    </TableLayout>
+    <Sidebar isStep="True">
+      <Sidebar>
+        <FirstTypeSelectedShouldBe isStep="True" return="Ice" />
+        <SecondTypeSelectedShouldBe isStep="True" return="Flying" />
+      </Sidebar>
+    </Sidebar>
+    <TableLayout isStep="True">
+      <TableLayout>
+        <SelectTypeCombination isStep="True" typeOne="Flying" typeTwo="Ice" />
+        <TypeCombinationShouldBeSelected isStep="True" typeOne="Flying" typeTwo="Ice" />
+      </TableLayout>
+    </TableLayout>
+    <Sidebar isStep="True">
+      <Sidebar>
+        <FirstTypeSelectedShouldBe isStep="True" return="Flying" />
+        <SecondTypeSelectedShouldBe isStep="True" return="Ice" />
+      </Sidebar>
+    </Sidebar>
+  </Type>
+</Test>

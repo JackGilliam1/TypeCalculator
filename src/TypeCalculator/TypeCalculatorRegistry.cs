@@ -3,7 +3,6 @@ using StructureMap.Configuration.DSL;
 using TypeCalculator.Core;
 using TypeCalculator.Views;
 using TypeCalculator.Views.Home;
-using TypeCalculator.Views.Types;
 
 namespace TypeCalculator
 {

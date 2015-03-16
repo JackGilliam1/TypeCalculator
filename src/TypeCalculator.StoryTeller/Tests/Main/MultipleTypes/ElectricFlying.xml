@@ -7,7 +7,11 @@
   <Type>
     <SelectType isStep="True" selectType="Electric" />
     <SelectTypeTwo isStep="True" selectType="Flying" />
-    <WaitForStatus isStep="True" status="Updated" />
+    <SwitchLayouts isStep="True">
+      <SwitchLayouts>
+        <SwitchToLayout isStep="True" layout="Column" />
+      </SwitchLayouts>
+    </SwitchLayouts>
     <StrongAgainstShouldContain isStep="True">
       <Rows>
         <row isStep="True" expected="Bug" />

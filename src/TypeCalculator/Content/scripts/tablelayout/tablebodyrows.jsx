@@ -19,8 +19,7 @@ module.exports = React.createClass({
                   lowerFirstType = selectedFirstType.toLowerCase(),
                   lowerSecondType = selectedSecondType.toLowerCase(),
                   isSelected = lowerStat === lowerFirstType,
-                  className = 'body-row row clickable' + (isSelected ? ' selected' : ''),
-                  currentCell = 0;
+                  className = 'body-row row clickable' + (isSelected ? ' selected' : '');
 
               var multipliers = stat.Stats.map(function(elementStat) {
                 var className = 'body-cell cell',
@@ -38,13 +37,15 @@ module.exports = React.createClass({
                 if(isSelected) {
                   className += ' horiz-selected';
                 }
-                currentCell += 1;
-                className += ' ' + elementStat.MultiplierStrength.Strength.toLowerCase();
+                if(elementStat.MultiplierStrength.Strength !== '') {
+                  className += ' ' + elementStat.MultiplierStrength.Strength.toLowerCase();
+                }
 
                 if(lowerElementType === lowerSecondType || isSelected) {
                   className += ' selected';
                 }
-                className += ' cell-' + currentCell;
+                className += ' cell-' + elementStat.ElementType.toLowerCase();
+                className += ' ' + stat.ElementType + elementStat.ElementType;
                 return (
                   <td key={elementStat.ElementType} className={className} onClick={onCellClick}>{multiplier}</td>
                 );

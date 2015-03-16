@@ -41,7 +41,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div id="rightSection" className="main-section">
+      <div id="typesTableSection" className="main-section">
         <table className="stat-table">
           <TableHeaderRows stats={stats} />
           <TableBodyRows selectedFirstType={this.props.selectedFirstType || 'None'} selectedSecondType={this.props.selectedSecondType || 'None'} stats={stats} onCellClick={this.props.onCellClick} />

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Test name="ElectricWater" lifecycle="Acceptance">
+  <Navigation>
+    <NavigateHome isStep="True" />
+    <ShouldSeeTypeInputBox isStep="True" />
+  </Navigation>
+  <Type>
+    <SwitchLayouts isStep="True">
+      <SwitchLayouts>
+        <SwitchToLayout isStep="True" layout="Table" />
+      </SwitchLayouts>
+    </SwitchLayouts>
+    <TableLayout isStep="True">
+      <TableLayout>
+        <SelectTypeCombination isStep="True" typeOne="Electric" typeTwo="Water" />
+        <TypeCombinationShouldBeSelected isStep="True" typeOne="Electric" typeTwo="Water" />
+      </TableLayout>
+    </TableLayout>
+  </Type>
+</Test>

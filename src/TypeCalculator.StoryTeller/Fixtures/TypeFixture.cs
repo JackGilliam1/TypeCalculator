@@ -6,6 +6,7 @@ using Serenity;
 using Serenity.Fixtures;
 using StoryTeller;
 using StoryTeller.Engine;
+using TypeCalculator.Core;
 
 namespace TypeCalculator.StoryTeller.Fixtures
 {
@@ -13,29 +14,24 @@ namespace TypeCalculator.StoryTeller.Fixtures
     {
         public TypeFixture()
         {
-            var types = new [] {
-                "None", "Normal", "Fire", "Water", "Electric", "Grass", "Ice",
-                "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock",
-                "Ghost", "Dragon", "Dark", "Steel", "Fairy"
-            };
-            AddSelectionValues("Types", types);
-            AddSelectionValues("SelectTypes", types);
             AddSelectionValues("BadgeStatus", new [] {
                 "Updating", "Updated"
             });
         }
 
         [FormatAs("Select Type One: {selectType}")]
-        public void SelectType([SelectionValues("SelectTypes")] string selectType)
+        public void SelectType([EnumSelectionValues(typeof(ElementType))] string selectType)
         {
-            Driver.SetData(Driver.FindElement(By.Id("typeSelectOne")), selectType.ToLower());
+            Driver.FindElement(By.CssSelector("#typeOneSidebarSelect .selection-item[value=" + selectType.ToLower() + "]"))
+                .Click();
             WaitForStatus("Updated");
         }
 
         [FormatAs("Select Type Two: {selectType}")]
-        public void SelectTypeTwo([SelectionValues("SelectTypes")] string selectType)
+        public void SelectTypeTwo([EnumSelectionValues(typeof(ElementType))] string selectType)
         {
-            Driver.SetData(Driver.FindElement(By.Id("typeSelectTwo")), selectType.ToLower());
+            Driver.FindElement(By.CssSelector("#typeTwoSidebarSelect .selection-item[value=" + selectType.ToLower() + "]"))
+                .Click();
             WaitForStatus("Updated");
         }
 
@@ -48,11 +44,26 @@ namespace TypeCalculator.StoryTeller.Fixtures
                 {
                     return Driver.FindElement(By.Id("#statusBadge")).Text == status;
                 }
-                catch
+                catch(NoSuchElementException)
                 {
                 }
                 return false;
             }, timeoutInMilliseconds: 2000);
+        }
+
+        public IGrammar SwitchLayouts()
+        {
+            return Embed<SwitchLayoutsFixture>("Switch Layouts");
+        }
+
+        public IGrammar TableLayout()
+        {
+            return Embed<TableLayoutFixture>("Table Layout");
+        }
+
+        public IGrammar Sidebar()
+        {
+            return Embed<SidebarFixture>("Sidebar");
         }
 
         public IGrammar StrengthsShouldContain()

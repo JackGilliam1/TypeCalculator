@@ -12,7 +12,7 @@ module.exports = React.createClass({
   },
   render: function() {
     return (
-      <div id="rightSection" className="main-section">
+      <div id="typesColumnSection" className="main-section">
         <TypeColumn className={"attackSection strong type-column"} columnTitle="Strong Attack Against" types={this.props.strongAttack} />
         <TypeColumn className={"attackSection weak type-column"} columnTitle="Weak Attack Against" types={this.props.weakAttack} />
         <TypeColumn className={"defenseSection strong type-column"} columnTitle="Strong Defense Against" types={this.props.strongDefense} />

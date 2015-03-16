@@ -1,4 +1,4 @@
-﻿
+﻿@import 'typecolors';
 
 .sidebar {
     float:left;
@@ -36,5 +36,10 @@
     .selection-item {
         display: block;
         padding: 3px;
+    }
+
+    a {
+        color: black;
+        text-decoration: none;
     }
 }

@@ -6,6 +6,11 @@
   </Navigation>
   <Type>
     <SelectType isStep="True" selectType="Psychic" />
+    <SwitchLayouts isStep="True">
+      <SwitchLayouts>
+        <SwitchToLayout isStep="True" layout="Column" />
+      </SwitchLayouts>
+    </SwitchLayouts>
     <StrengthsShouldContain isStep="True">
       <Rows>
         <row isStep="True" expected="Fighting" />
