@@ -78,8 +78,10 @@ module.exports = React.createClass({
       $('.cell').hover(function(e) {
         $('.cell.hover').removeClass('hover');
         var cellColumnClass = $(e.currentTarget).attr('class');
-        if(cellColumnClass.indexOf('cell-') != -1) {
-          $('.' + cellColumnClass.substring(cellColumnClass.indexOf('cell-'))).addClass('hover');
+        var columnTypeIdx = cellColumnClass.indexOf('cell-');
+        if (columnTypeIdx != -1) {
+            var cellClassToHighlight = cellColumnClass.substring(columnTypeIdx).split(' ')[0];
+            $('.' + cellClassToHighlight).addClass('hover');
         }
       });
     },
