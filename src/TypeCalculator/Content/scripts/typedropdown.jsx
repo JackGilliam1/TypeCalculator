@@ -56,10 +56,10 @@ module.exports = React.createClass({
     }
     return (
       <div id="typeDropdown" className="centered at-top stretch">
-        <select id="typeSelectOne" defaultValue={selectedFirstType} value={selectedFirstType} onChange={firstTypeChanged}>
+        <select id="typeSelectOne" value={selectedFirstType} onChange={firstTypeChanged}>
           {firstElements}
         </select>
-        <select id="typeSelectTwo" defaultValue={selectedSecondType}  value={selectedSecondType} onChange={secondTypeChanged}>
+        <select id="typeSelectTwo" value={selectedSecondType} onChange={secondTypeChanged}>
           {secondElements}
         </select>
         <UpdateStatus status={this.props.status} />

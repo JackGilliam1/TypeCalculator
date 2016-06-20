@@ -1,4 +1,5 @@
 ﻿var React = require('react'),
+    ReactDOM = require('react-dom'),
     $ = require('jquery'),
     TypeDropdown = require('typedropdown.jsx'),
     Sidebar = require('typesidebar.jsx'),
@@ -95,5 +96,5 @@ module.exports = TypeCalculator = React.createClass({
 });
 
 $(document).ready(function() {
-  React.render(<TypeCalculator />, document.getElementById("mainContainer"));
+  ReactDOM.render(<TypeCalculator />, document.getElementById("mainContainer"));
 });

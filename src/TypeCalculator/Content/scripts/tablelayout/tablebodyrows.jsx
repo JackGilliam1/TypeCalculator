@@ -70,7 +70,7 @@ module.exports = React.createClass({
               );
           });
 
-          console.log('updating');
+          console.log('updating the table with ' + selectedFirstType + ' and ' + selectedSecondType);
 
         return (
           <tbody className="stats-table-body">
