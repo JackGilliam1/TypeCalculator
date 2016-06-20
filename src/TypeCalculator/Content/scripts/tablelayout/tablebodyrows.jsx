@@ -1,6 +1,17 @@
 ﻿var React = require('react'),
     $ = require('jquery');
 
+var staticMethodClass = React.createClass({
+    statics: {
+        shouldUpdateTheComponent: function(properties, nextProps) {
+            return properties.selectedFirstType !== nextProps.selectedFirstType || properties.selectedSecondType !== nextProps.selectedSecondType;
+        }
+    },
+    render: function() {
+        
+    }
+});
+
 module.exports = React.createClass({
     displayName: 'TableBodyRows',
     propTypes: {
@@ -8,7 +19,7 @@ module.exports = React.createClass({
       onCellClick: React.PropTypes.func.isRequired
     },
     shouldComponentUpdate: function(nextProps) {
-      return this.props.selectedFirstType !== nextProps.selectedFirstType || this.props.selectedSecondType !== nextProps.selectedSecondType;
+        return staticMethodClass.shouldUpdateTheComponent(this.props, nextProps);
     },
     render: function() {
       var selectedFirstType = this.props.selectedFirstType,

@@ -4,18 +4,19 @@
   "private": true,
   "preferGlobal": true,
   "devDependencies": {
-    "css-loader": "~0.9.1",
-    "gulp": "~3.8.11",
-    "gulp-dotnet-assembly-info": "~0.1.10",
-    "gulp-msbuild": "~0.2.8",
-    "gulp-shell": "~0.4.0",
-    "jsx-loader": "~0.12.2",
-    "kerberos": "~0.0.9",
-    "mongodb": "~1.4.34",
-    "mongoose": "~3.8.25",
-    "node-sass": "~3.7.0",
-    "react": "~0.12.2",
-    "sass-loader": "~3.2.0",
-    "webpack": "~1.13.1"
+    "css-loader": "^0.9.1",
+    "gulp": "^3.8.11",
+    "gulp-dotnet-assembly-info": "^0.1.10",
+    "gulp-msbuild": "^0.2.8",
+    "gulp-shell": "^0.4.0",
+    "jsx-loader": "^0.12.2",
+    "kerberos": "^0.0.9",
+    "mongodb": "^1.4.34",
+    "mongoose": "^3.8.25",
+    "node-sass": ">=3.7.0",
+    "react": "^15.1.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
   }
 }
