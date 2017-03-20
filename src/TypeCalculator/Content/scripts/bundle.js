@@ -417,7 +417,7 @@
 	      layout: newLayout
 	    });
 	  },
-	  render: function() {
+	  render: function () {
 	    var rightSection;
 	    if(this.state.layout === 'Table') {
 	      rightSection = React.createElement(TypesTableLayout, {
@@ -30030,14 +30030,20 @@
 	var React = __webpack_require__(6);
 	var $ = __webpack_require__(173);
 	module.exports = React.createClass({
-	  displayName: 'SidebarList',
-	  propTypes: {
-	   types: React.PropTypes.arrayOf(React.PropTypes.string),
-	   selectedFirstType: React.PropTypes.string,
-	   selectedSecondType: React.PropTypes.string,
-	   firstTypeChanged: React.PropTypes.func.isRequired,
-	   secondTypeChanged: React.PropTypes.func.isRequired
-	  },
+	    displayName: 'SidebarList',
+	    propTypes: {
+	        types: React.PropTypes.arrayOf(React.PropTypes.string),
+	        selectedFirstType: React.PropTypes.string,
+	        selectedSecondType: React.PropTypes.string,
+	        firstTypeChanged: React.PropTypes.func.isRequired,
+	        secondTypeChanged: React.PropTypes.func.isRequired
+	    },
+	    getDefaultProps: function() {
+	        return {
+	            selectedFirstType: "Fairy",
+	            firstTypeChanged: function() {}
+	        };
+	    },
 	  getInitialState: function() {
 	    return {
 	      types: ["None", "NoneTwo"]
@@ -30074,7 +30080,7 @@
 	                return React.createElement("a", {key: type, className: className, href: "#", onClick: onClick, value: lowerType}, type);
 	              });
 	  },
-	  render: function() {
+	    render: function () {
 	    var defaultElement = React.createElement("a", {key: "None", href: "#", className: "clickable selection-item selected", value: "none"}, "None"),
 	        firstElements = [defaultElement],
 	        secondElements = [defaultElement],

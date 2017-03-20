@@ -1,14 +1,20 @@
 ﻿var React = require('react');
 var $ = require('jquery');
 module.exports = React.createClass({
-  displayName: 'SidebarList',
-  propTypes: {
-   types: React.PropTypes.arrayOf(React.PropTypes.string),
-   selectedFirstType: React.PropTypes.string,
-   selectedSecondType: React.PropTypes.string,
-   firstTypeChanged: React.PropTypes.func.isRequired,
-   secondTypeChanged: React.PropTypes.func.isRequired
-  },
+    displayName: 'SidebarList',
+    propTypes: {
+        types: React.PropTypes.arrayOf(React.PropTypes.string),
+        selectedFirstType: React.PropTypes.string,
+        selectedSecondType: React.PropTypes.string,
+        firstTypeChanged: React.PropTypes.func.isRequired,
+        secondTypeChanged: React.PropTypes.func.isRequired
+    },
+    getDefaultProps: function() {
+        return {
+            selectedFirstType: "Fairy",
+            firstTypeChanged: function() {}
+        };
+    },
   getInitialState: function() {
     return {
       types: ["None", "NoneTwo"]
@@ -45,7 +51,7 @@ module.exports = React.createClass({
                 return <a key={type} className={className} href="#" onClick={onClick} value={lowerType}>{type}</a>;
               });
   },
-  render: function() {
+    render: function () {
     var defaultElement = <a key="None" href="#" className="clickable selection-item selected" value="none">None</a>,
         firstElements = [defaultElement],
         secondElements = [defaultElement],

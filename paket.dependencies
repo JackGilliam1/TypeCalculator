@@ -1,0 +1,18 @@
+source https://www.nuget.org/api/v2
+
+nuget Bottles
+nuget FubuLocalization
+nuget FubuMVC.Core
+nuget FubuMVC.Core.View
+nuget FubuMVC.Katana
+nuget FubuMVC.Spark
+nuget FubuMVC.StructureMap
+nuget FubuTestingSupport
+nuget Marten
+nuget MongoDb
+nuget Selenium.RC
+nuget Selenium.Support
+nuget Selenium.WebDriverBackedSelenium
+nuget Serenity
+nuget Storyteller2
+nuget xunit

@@ -35,6 +35,9 @@ node_modules/
 *.css
 src/*-results/
 *.stresult
+packages
+packages/*
 src/.vs
 localmongodb
 localmongodb/mongod.lock
+paket.lock

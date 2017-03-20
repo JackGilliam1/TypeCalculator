@@ -53,10 +53,10 @@ module.exports = TypeCalculator = React.createClass({
   },
   layoutChanged: function(newLayout) {
     this.setState({
-      layout: newLayout
+        layout: newLayout 
     });
   },
-  render: function() {
+  render: function () {
     var rightSection;
     if(this.state.layout === 'Table') {
       rightSection = <TypesTableLayout
