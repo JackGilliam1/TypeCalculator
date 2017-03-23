@@ -1,18 +1,27 @@
 source https://www.nuget.org/api/v2
 
 nuget Bottles
-nuget FubuLocalization
+nuget FubuCore 1.3.0.278
+nuget FubuLocalization 1.1.0.182
 nuget FubuMVC.Core
-nuget FubuMVC.Core.View
-nuget FubuMVC.Katana
-nuget FubuMVC.Spark
+nuget FubuMVC.Core.View 1.1.0.581
+nuget FubuMVC.Katana 1.3.0.1710
+nuget FubuMVC.OwinHost 1.3.0.1710
+nuget FubuMVC.Spark 1.1.0.594
 nuget FubuMVC.StructureMap
 nuget FubuTestingSupport
+nuget HtmlTags 2.1.0.183
 nuget Marten
 nuget MongoDb
-nuget Selenium.RC
-nuget Selenium.Support
-nuget Selenium.WebDriverBackedSelenium
+nuget NUnit 2.5.10.11092
+nuget RhinoMocks 4.0.0-alpha3
+nuget Owin 1.0.0.0
+nuget Selenium.RC 2.43.1
+nuget Selenium.Support 2.43.1
+nuget Selenium.WebDriverBackedSelenium 2.43.1
 nuget Serenity
-nuget Storyteller2
-nuget xunit
+nuget Spark 1.7.5.3
+nuget Storyteller2 2.0.0.46
+nuget structuremap 2.6.3
+nuget structuremap.automocking 2.6.3
+nuget xunit 1.9.2
