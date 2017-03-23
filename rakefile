@@ -20,30 +20,13 @@ end
 
 task :default => [':npm_install']
 
-
-namespace :st do
-  storytellerTestProjectName = 'EH.PBP.StoryTeller'
-  storytellerTestProjectPath = "src\\#{storytellerTestProjectName}"
-  storytellerPath = "packages\\Storyteller2\\tools\\ST.exe"
-  commonArgs = "--timeout 400 --profile Debug"
-  runCommandArgs = "--results-path st\\index.htm --config bin\\Debug\\#{storytellerTestProjectName}.dll.config"
-  runCommand = "#{storytellerPath} run #{storytellerTestProjectPath} #{runCommandArgs} #{commonArgs}"
-
-  task :open do
-    command = "#{storytellerPath} open #{storytellerTestProjectPath} #{commonArgs}"
-    sh(command)
-  end
-
-  task :run do
-    puts 'Starting Storyteller test run, results will show up in "st\\index.htm"'
-    sh(runCommand + (tc_build_number ? " --teamcity" : ""))
-  end
-
-  task :runRegression do
-    puts 'Starting Storyteller test run and running only Regression tests, results will show up in "st\\index.htm"'
-    command = "#{runCommand} --lifecycle Regression"
-    sh(command)
-  end
-end
+FubuRake::Storyteller.new({
+  :path => 'src/TypeCalculator.StoryTeller',
+  :st_path => 'packages/Storyteller2/tools',
+  :prefix => 'st',
+  :timeout => '300',
+  :profile => 'chrome',
+   :compilemode => @solution.compilemode
+})
 
 FubuRake::MvcApp.new({:directory => 'src/TypeCalculator', :name => 'typecalculator'})
