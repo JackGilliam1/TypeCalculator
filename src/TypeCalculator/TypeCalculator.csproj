@@ -172,7 +172,6 @@
       <DependentUpon>typestablelayout.css</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="ripple.dependencies.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
