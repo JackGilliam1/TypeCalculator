@@ -11,14 +11,14 @@ namespace TypeCalculator.StoryTeller.Fixtures
         [FormatAs("Select Type One: {selectType}")]
         public void SelectType([EnumSelectionValues(typeof(ElementType))] string selectType)
         {
-            Driver.FindElement(By.CssSelector("#typeOneSidebarSelect .selection-item[value=" + selectType.ToLower() + "]"))
+            Driver.FindElement(By.CssSelector("#typeOneSidebarSelect .selection-item." + selectType.ToLower()))
                 .Click();
         }
 
         [FormatAs("Select Type Two: {selectType}")]
         public void SelectTypeTwo([EnumSelectionValues(typeof(ElementType))] string selectType)
         {
-            Driver.FindElement(By.CssSelector("#typeTwoSidebarSelect .selection-item[value=" + selectType.ToLower() + "]"))
+            Driver.FindElement(By.CssSelector("#typeTwoSidebarSelect .selection-item." + selectType.ToLower()))
                 .Click();
         }
 
