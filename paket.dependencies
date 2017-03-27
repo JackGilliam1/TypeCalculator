@@ -1,3 +1,4 @@
+source https://api.nuget.org/v3/index.json
 source https://www.nuget.org/api/v2
 
 nuget Bottles
@@ -11,9 +12,12 @@ nuget FubuMVC.Spark 1.1.0.594
 nuget FubuMVC.StructureMap
 nuget FubuTestingSupport
 nuget HtmlTags 2.1.0.183
+nuget Npgsql 3.2.0
+nuget Newtonsoft.Json 9.0.2-beta2
+nuget Microsoft.Extensions.Logging 1.1.0
+nuget Microsoft.Extensions.Logging.Abstractions 1.1.0
 nuget Marten
 nuget MongoDb
-nuget NUnit 2.5.10.11092
 nuget RhinoMocks 4.0.0-alpha3
 nuget Owin 1.0.0.0
 nuget Selenium.RC 2.43.1
@@ -24,4 +28,3 @@ nuget Spark 1.7.5.3
 nuget Storyteller2 2.0.0.46
 nuget structuremap 2.6.3
 nuget structuremap.automocking 2.6.3
-nuget xunit 1.9.2

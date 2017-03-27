@@ -3,12 +3,6 @@ using MongoDB.Driver.Builders;
 
 namespace TypeCalculator.Core
 {
-    public interface ITypeCalculatorDatabase
-    {
-        ElementTypeAttributes GetAttributesFor(ElementType elementType);
-        void UpdateAttributes(ElementTypeAttributes attributes);
-    }
-
     public class MongoDbDatabase : ITypeCalculatorDatabase
     {
         private readonly MongoDbSettings _settings;

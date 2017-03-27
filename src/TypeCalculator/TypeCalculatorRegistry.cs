@@ -18,7 +18,7 @@ namespace TypeCalculator
 
 		    For<IActivator>().Add<InitialStatsActivator>();
             For<ITypesDictionary>().Use<TypesDictionary>();
-            ForSingletonOf<ITypeCalculatorDatabase>().Use<MongoDbDatabase>();
+            ForSingletonOf<ITypeCalculatorDatabase>().Use<MartenDbDatabase>();
 		    For<IElementTypesDbConnection>().Use<ElementTypesDbConnection>();
 		}
 	}
