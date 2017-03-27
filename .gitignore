@@ -41,3 +41,4 @@ src/.vs
 localmongodb
 localmongodb/mongod.lock
 paket.lock
+debug.log
