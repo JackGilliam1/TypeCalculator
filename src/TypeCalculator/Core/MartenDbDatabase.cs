@@ -6,12 +6,10 @@ namespace TypeCalculator.Core
     public class MartenDbDatabase : ITypeCalculatorDatabase
     {
         private readonly IDocumentStore _docStore;
-        private MartenDbSettings _settings;
 
         public MartenDbDatabase(MartenDbSettings settings)
         {
-            _settings = settings;
-            _docStore = DocumentStore.For($"host={settings.Url};database={settings.DatabaseName};password=1234;username=superuserjackgil");
+            _docStore = DocumentStore.For($"host={settings.Url};database={settings.DatabaseName};password={settings.Password};username={settings.Username}");
         }
 
         public ElementTypeAttributes GetAttributesFor(ElementType elementType)

@@ -1,2 +1,2 @@
-postgres -D "C:\PostgreSQL\data\pg96"
+postgres -D "localpostgres"
 pause
