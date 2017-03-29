@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MongoDB.Bson;
 
 namespace TypeCalculator.Core
 {
     public class ElementTypeAttributes
     {
-        public ObjectId Id { get; set; }
+        public int Id { get; set; }
         public ElementType ElementType { get; set; }
         public bool Updated { get; set; }
 

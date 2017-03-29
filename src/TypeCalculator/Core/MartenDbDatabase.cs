@@ -11,7 +11,7 @@ namespace TypeCalculator.Core
         public MartenDbDatabase(MartenDbSettings settings)
         {
             _settings = settings;
-            _docStore = DocumentStore.For($"host={settings.Url};database={settings.DatabaseName}");
+            _docStore = DocumentStore.For($"host={settings.Url};database={settings.DatabaseName};password=1234;username=superuserjackgil");
         }
 
         public ElementTypeAttributes GetAttributesFor(ElementType elementType)
