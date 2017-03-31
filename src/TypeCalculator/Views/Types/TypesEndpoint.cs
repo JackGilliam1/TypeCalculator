@@ -129,5 +129,14 @@ namespace TypeCalculator.Views.Types
                 Stats = _typesDictionary.GetStats(),
             };
         }
+
+        [UrlPattern("types/addType")]
+        public AddTypeResponse AddType(AddTypeRequest request)
+        {
+            return new AddTypeResponse
+            {
+
+            };
+        }
     }
 }

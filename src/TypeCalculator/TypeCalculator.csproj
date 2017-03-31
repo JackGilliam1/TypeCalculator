@@ -75,6 +75,8 @@
     <Compile Include="Views\Home\HomeViewModel.cs" />
     <Compile Include="Views\ElementTypesDbConnection.cs" />
     <Compile Include="Views\TypeExtensions.cs" />
+    <Compile Include="Views\Types\AddTypeRequest.cs" />
+    <Compile Include="Views\Types\AddTypeResponse.cs" />
     <Compile Include="Views\Types\GetTypesRequest.cs" />
     <Compile Include="Views\Types\GetTypesResponse.cs" />
     <Compile Include="Views\InitialStatsActivator.cs" />
@@ -106,6 +108,7 @@
     <Content Include="Content\scripts\tablelayout\tableheaderrows.jsx" />
     <Content Include="Content\scripts\tablelayout\tablebodyrows.jsx" />
     <Content Include="Content\scripts\tablelayout\emptytable.jsx" />
+    <Content Include="Content\styles\addtypesform.scss" />
     <None Include="Content\styles\typecalculator.scss" />
     <Content Include="Content\styles\typecolors.css">
       <DependentUpon>typecolors.scss</DependentUpon>

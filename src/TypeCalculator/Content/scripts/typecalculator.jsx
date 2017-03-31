@@ -14,6 +14,7 @@ module.exports = TypeCalculator = React.createClass({
   getInitialState: function() {
     var defaultTypes = [];
     return {
+      selectedAddType: 'strongAtk',
       selectedFirstType: 'None',
       selectedSecondType: 'None',
       layout: 'Table',
@@ -49,6 +50,11 @@ module.exports = TypeCalculator = React.createClass({
   secondTypeChanged: function(newValue) {
     this.updateValues(this.state.selectedFirstType, newValue);
   },
+  selectedAddTypeChange: function (newValue) {
+    this.setState({
+      selectedAddType: newValue
+    });
+  },
   firstAndSecondTypeChanged: function(typeOne, typeTwo) {
     this.updateValues(typeOne, typeTwo);
   },
@@ -61,6 +67,7 @@ module.exports = TypeCalculator = React.createClass({
     //typeOne WeakDef, WeakAtk, StrongDef, StrongAtk, Immun
     //typeTwo Water, Fire, Grass, Custom...
     //typeName Water, Fire, Grass, Custom...
+    var yes = typeOne;
   },
   render: function () {
     var rightSection;
@@ -95,7 +102,9 @@ module.exports = TypeCalculator = React.createClass({
          firstTypeChanged={this.firstTypeChanged}
          secondTypeChanged={this.secondTypeChanged} />
          <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} defaultSelection={this.state.layout} />
-         <AddTypesForm onAddTypes={this.typeAdded}/>
+         <AddTypesForm onAddTypes={this.typeAdded}
+                       selectedAddType={this.state.selectedAddType}
+                       addTypeChange={this.selectedAddTypeChange}/>
          {rightSection}
       </div>
     );

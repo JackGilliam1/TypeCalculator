@@ -80,7 +80,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(3)();
-	exports.push([module.id, ".sidebar {\n  float: left; }\n  .sidebar .sidebar-section {\n    display: inline-block;\n    background: white;\n    border: 1px solid black;\n    overflow: hidden;\n    text-align: center; }\n  .sidebar .clickable:hover {\n    cursor: pointer;\n    background: #6890f0;\n    color: white; }\n  .sidebar .clickable.selected, .sidebar .clickable:checked {\n    cursor: default;\n    background: #AFFFE0;\n    color: black; }\n  .sidebar .selection-header {\n    background: whitesmoke;\n    border-bottom: 1px solid black;\n    font-weight: bold;\n    font-size: 20px;\n    cursor: default; }\n  .sidebar .selection-item {\n    display: block;\n    padding: 3px; }\n  .sidebar a {\n    color: black;\n    text-decoration: none; }\n\n.type-column {\n  display: inline-block;\n  margin: 1px;\n  border: 1px solid black;\n  vertical-align: top;\n  background: white;\n  text-align: center;\n  font-size: 32px; }\n  .type-column h2 {\n    padding: 10px; }\n  .type-column .type {\n    color: white; }\n  .type-column .none {\n    background: #68A090; }\n  .type-column .bug {\n    background: #A8B820; }\n  .type-column .dark {\n    background: #705848; }\n  .type-column .dragon {\n    background: #7038F8; }\n  .type-column .electric {\n    background: #F8D030; }\n  .type-column .fairy {\n    background: #EE99AC; }\n  .type-column .fighting {\n    background: #C03028; }\n  .type-column .fire {\n    background: #F08030; }\n  .type-column .flying {\n    background: #A890F0; }\n  .type-column .ghost {\n    background: #7038F8; }\n  .type-column .grass {\n    background: #78C850; }\n  .type-column .ground {\n    background: #E0C068; }\n  .type-column .ice {\n    background: #98D8D8; }\n  .type-column .normal {\n    background: #A8A878; }\n  .type-column .poison {\n    background: #A040A0; }\n  .type-column .psychic {\n    background: #F85888; }\n  .type-column .rock {\n    background: #B8A038; }\n  .type-column .steel {\n    background: #B8B8D0; }\n  .type-column .water {\n    background: #6890F0; }\n  .type-column .type {\n    display: block;\n    padding-bottom: 2px; }\n  .type-column .types {\n    display: block;\n    border-top: 1px solid black; }\n  .type-column .count {\n    color: black;\n    display: block;\n    background: whitesmoke;\n    border-bottom: 1px solid black;\n    padding-bottom: 2px; }\n\n.centered {\n  text-align: center; }\n\n.stretch.at-top {\n  background: #6890f0; }\n\n#statusBadge {\n  margin-left: 2px; }\n\nbody {\n  background: #6890f0; }\n\n.main-section {\n  display: inline-block;\n  margin: 1px; }\n", ""]);
+	exports.push([module.id, ".sidebar {\n  float: left; }\n  .sidebar .sidebar-section {\n    display: inline-block;\n    background: white;\n    border: 1px solid black;\n    overflow: hidden;\n    text-align: center; }\n  .sidebar .clickable:hover {\n    cursor: pointer;\n    background: #6890f0;\n    color: white; }\n  .sidebar .clickable.selected, .sidebar .clickable:checked {\n    cursor: default;\n    background: #AFFFE0;\n    color: black; }\n  .sidebar .selection-header {\n    background: whitesmoke;\n    border-bottom: 1px solid black;\n    font-weight: bold;\n    font-size: 20px;\n    cursor: default; }\n  .sidebar .selection-item {\n    display: block;\n    padding: 3px; }\n  .sidebar a {\n    color: black;\n    text-decoration: none; }\n\n.type-column {\n  display: inline-block;\n  margin: 1px;\n  border: 1px solid black;\n  vertical-align: top;\n  background: white;\n  text-align: center;\n  font-size: 32px; }\n  .type-column h2 {\n    padding: 10px; }\n  .type-column .type {\n    color: white; }\n  .type-column .none {\n    background: #68A090; }\n  .type-column .bug {\n    background: #A8B820; }\n  .type-column .dark {\n    background: #705848; }\n  .type-column .dragon {\n    background: #7038F8; }\n  .type-column .electric {\n    background: #F8D030; }\n  .type-column .fairy {\n    background: #EE99AC; }\n  .type-column .fighting {\n    background: #C03028; }\n  .type-column .fire {\n    background: #F08030; }\n  .type-column .flying {\n    background: #A890F0; }\n  .type-column .ghost {\n    background: #7038F8; }\n  .type-column .grass {\n    background: #78C850; }\n  .type-column .ground {\n    background: #E0C068; }\n  .type-column .ice {\n    background: #98D8D8; }\n  .type-column .normal {\n    background: #A8A878; }\n  .type-column .poison {\n    background: #A040A0; }\n  .type-column .psychic {\n    background: #F85888; }\n  .type-column .rock {\n    background: #B8A038; }\n  .type-column .steel {\n    background: #B8B8D0; }\n  .type-column .water {\n    background: #6890F0; }\n  .type-column .type {\n    display: block;\n    padding-bottom: 2px; }\n  .type-column .types {\n    display: block;\n    border-top: 1px solid black; }\n  .type-column .count {\n    color: black;\n    display: block;\n    background: whitesmoke;\n    border-bottom: 1px solid black;\n    padding-bottom: 2px; }\n\n.centered {\n  text-align: center; }\n\n.stretch.at-top {\n  background: #6890f0; }\n\n#statusBadge {\n  margin-left: 2px; }\n\n.addTypesSection {\n  float: left;\n  border: 1px solid black;\n  background-color: white;\n  padding: 10px; }\n  .addTypesSection .addTypesInput {\n    margin: 10px; }\n\nbody {\n  background: #6890f0; }\n\n.main-section {\n  display: inline-block;\n  margin: 1px; }\n", ""]);
 
 /***/ },
 /* 3 */
@@ -375,6 +375,7 @@
 	  getInitialState: function() {
 	    var defaultTypes = [];
 	    return {
+	      selectedAddType: 'strongAtk',
 	      selectedFirstType: 'None',
 	      selectedSecondType: 'None',
 	      layout: 'Table',
@@ -410,6 +411,11 @@
 	  secondTypeChanged: function(newValue) {
 	    this.updateValues(this.state.selectedFirstType, newValue);
 	  },
+	  selectedAddTypeChange: function (newValue) {
+	    this.setState({
+	      selectedAddType: newValue
+	    });
+	  },
 	  firstAndSecondTypeChanged: function(typeOne, typeTwo) {
 	    this.updateValues(typeOne, typeTwo);
 	  },
@@ -422,6 +428,7 @@
 	    //typeOne WeakDef, WeakAtk, StrongDef, StrongAtk, Immun
 	    //typeTwo Water, Fire, Grass, Custom...
 	    //typeName Water, Fire, Grass, Custom...
+	    var yes = typeOne;
 	  },
 	  render: function () {
 	    var rightSection;
@@ -456,7 +463,9 @@
 	         firstTypeChanged: this.firstTypeChanged, 
 	         secondTypeChanged: this.secondTypeChanged}), 
 	         React.createElement(SwitchLayoutsSection, {onLayoutSwitch: this.layoutChanged, defaultSelection: this.state.layout}), 
-	         React.createElement(AddTypesForm, {onAddTypes: this.typeAdded}), 
+	         React.createElement(AddTypesForm, {onAddTypes: this.typeAdded, 
+	                       selectedAddType: this.state.selectedAddType, 
+	                       addTypeChange: this.selectedAddTypeChange}), 
 	         rightSection
 	      )
 	    );
@@ -30506,39 +30515,35 @@
 	module.exports =  React.createClass({
 	  displayName: 'AddTypesSection',
 	  propTypes: {
-	    defaultSelection: React.PropTypes.string,
-	    layouts: React.PropTypes.arrayOf(React.PropTypes.string),
-	    onAddTypes: React.PropTypes.func.isRequired
+	    onAddTypes: React.PropTypes.func.isRequired,
+	    selectedAddType: React.PropTypes.string,
+	    selectedAddTypeChange: React.PropTypes.func.isRequired
 	  },
-	  handleChange: function (onAddTypes) {
+	  handleSubmit: function (onAddTypes) {
 	    return function(e) {
 	      onAddTypes(e.target.value);
 	    };
 	  },
+	  handleChange: function (onTypeChange) {
+	    return function (e) {
+	      onTypeChange(e.target.value);
+	    };
+	  },
 	  render: function () {
-	    var defaultLayout = this.props.defaultSelection || 'Column',
-	        layouts = this.props.layouts,
-	        layoutOptions;
-
-	    if(!layouts) {
-	      layouts = ['Table', 'Column'];
-	    }
-
-	    layoutOptions = layouts.map(function(layout) {
-	      return (
-	        React.createElement("option", {key: layout, value: layout}, layout + ' Layout')
-	      );
-	    });
-
+	    var selectedAddType = this.props.selectedAddType || 'strongAtk';
 	    return (
-	      React.createElement("div", {id: "addTypesSection"}, 
-	        React.createElement("form", {action: handleChange}, 
-	          React.createElement("input", {id: "typeOneInput", type: "text"}), 
-	          React.createElement("input", {id: "typeTwoInput", type: "text"}), 
-	          React.createElement("input", {id: "strongAtkRad", type: "radio", name: "typeType", value: "Strong Attack"}), 
-	          React.createElement("input", {id: "strongDefRad", type: "radio", name: "typeType", value: "Strong Defense"}), 
-	          React.createElement("input", {id: "strongDefRad", type: "radio", name: "typeType", value: "Strong Defense"}), 
-	          React.createElement("input", {id: "typeSubmit", type: "submit"})
+	      React.createElement("div", {id: "addTypesSection", className: 'addTypesSection'}, 
+	        React.createElement("form", {action: this.handleSubmit}, 
+	          React.createElement("input", {id: "typeOneInput", className: 'addTypesInput', type: "text"}), React.createElement("br", null), 
+	          React.createElement("input", {id: "typeTwoInput", className: 'addTypesInput', type: "text"}), React.createElement("br", null), 
+	          React.createElement("select", {id: "typeType", value: selectedAddType, onChange: this.handleChange(this.props.selectedAddTypeChange)}, 
+	            React.createElement("option", {key: "strongAtk", value: "strongAtk"}, "Strong Attack Against"), 
+	            React.createElement("option", {id: "strongDefRad", value: "strongDef"}, "Strong Defense Against"), 
+	            React.createElement("option", {id: "weakAtkRad", value: "weakAtk"}, "Weak Attack Against"), 
+	            React.createElement("option", {id: "weakDefRad", value: "weakDef"}, "Weak Defense Against"), 
+	            React.createElement("option", {id: "immuneRad", value: "immune"}, "Immune Against")
+	          ), 
+	          React.createElement("button", {id: "typeSubmit"}, "Submit")
 	        )
 	      )
 	      );
