@@ -86,6 +86,7 @@
     <Compile Include="Views\Types\TypesTableResponse.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\scripts\addtypesform.jsx" />
     <Content Include="Content\app.js" />
     <Content Include="Content\scripts\typecalculator.jsx" />
     <Content Include="Content\scripts\typecolumn.jsx" />

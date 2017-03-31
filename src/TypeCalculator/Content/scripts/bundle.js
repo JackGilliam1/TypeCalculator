@@ -367,6 +367,7 @@
 	    TypesColumnLayout = __webpack_require__(176),
 	    TypesTableLayout = __webpack_require__(179),
 	    SwitchLayoutsSection = __webpack_require__(185),
+	    AddTypesForm = __webpack_require__(186),
 	    TypeCalculator;
 
 	module.exports = TypeCalculator = React.createClass({
@@ -414,8 +415,13 @@
 	  },
 	  layoutChanged: function(newLayout) {
 	    this.setState({
-	      layout: newLayout
+	        layout: newLayout 
 	    });
+	  },
+	  typeAdded: function(typeOne, typeTwo, typeType) {
+	    //typeOne WeakDef, WeakAtk, StrongDef, StrongAtk, Immun
+	    //typeTwo Water, Fire, Grass, Custom...
+	    //typeName Water, Fire, Grass, Custom...
 	  },
 	  render: function () {
 	    var rightSection;
@@ -450,6 +456,7 @@
 	         firstTypeChanged: this.firstTypeChanged, 
 	         secondTypeChanged: this.secondTypeChanged}), 
 	         React.createElement(SwitchLayoutsSection, {onLayoutSwitch: this.layoutChanged, defaultSelection: this.state.layout}), 
+	         React.createElement(AddTypesForm, {onAddTypes: this.typeAdded}), 
 	         rightSection
 	      )
 	    );
@@ -30487,6 +30494,54 @@
 	        )
 	      )
 	    );
+	  }
+	});
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(6);
+
+	module.exports =  React.createClass({
+	  displayName: 'AddTypesSection',
+	  propTypes: {
+	    defaultSelection: React.PropTypes.string,
+	    layouts: React.PropTypes.arrayOf(React.PropTypes.string),
+	    onAddTypes: React.PropTypes.func.isRequired
+	  },
+	  handleChange: function (onAddTypes) {
+	    return function(e) {
+	      onAddTypes(e.target.value);
+	    };
+	  },
+	  render: function () {
+	    var defaultLayout = this.props.defaultSelection || 'Column',
+	        layouts = this.props.layouts,
+	        layoutOptions;
+
+	    if(!layouts) {
+	      layouts = ['Table', 'Column'];
+	    }
+
+	    layoutOptions = layouts.map(function(layout) {
+	      return (
+	        React.createElement("option", {key: layout, value: layout}, layout + ' Layout')
+	      );
+	    });
+
+	    return (
+	      React.createElement("div", {id: "addTypesSection"}, 
+	        React.createElement("form", {action: handleChange}, 
+	          React.createElement("input", {id: "typeOneInput", type: "text"}), 
+	          React.createElement("input", {id: "typeTwoInput", type: "text"}), 
+	          React.createElement("input", {id: "strongAtkRad", type: "radio", name: "typeType", value: "Strong Attack"}), 
+	          React.createElement("input", {id: "strongDefRad", type: "radio", name: "typeType", value: "Strong Defense"}), 
+	          React.createElement("input", {id: "strongDefRad", type: "radio", name: "typeType", value: "Strong Defense"}), 
+	          React.createElement("input", {id: "typeSubmit", type: "submit"})
+	        )
+	      )
+	      );
 	  }
 	});
 

@@ -42,3 +42,7 @@ localmongodb
 localmongodb/mongod.lock
 paket.lock
 debug.log
+localpostgres/pg_stat_tmp/*
+localpostgres/pg_xlog/*
+localpostgres/pg_stat/*
+localpostgres/postmaster.pid

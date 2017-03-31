@@ -1,2 +1,0 @@
-postgres -D "localpostgres"
-pause

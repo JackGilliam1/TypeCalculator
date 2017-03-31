@@ -6,6 +6,7 @@
     TypesColumnLayout = require('typescolumnlayout.jsx'),
     TypesTableLayout = require('tablelayout/typestablelayout.jsx'),
     SwitchLayoutsSection = require('switchlayouts.jsx'),
+    AddTypesForm = require('addtypesform.jsx'),
     TypeCalculator;
 
 module.exports = TypeCalculator = React.createClass({
@@ -56,6 +57,11 @@ module.exports = TypeCalculator = React.createClass({
         layout: newLayout 
     });
   },
+  typeAdded: function(typeOne, typeTwo, typeType) {
+    //typeOne WeakDef, WeakAtk, StrongDef, StrongAtk, Immun
+    //typeTwo Water, Fire, Grass, Custom...
+    //typeName Water, Fire, Grass, Custom...
+  },
   render: function () {
     var rightSection;
     if(this.state.layout === 'Table') {
@@ -89,6 +95,7 @@ module.exports = TypeCalculator = React.createClass({
          firstTypeChanged={this.firstTypeChanged}
          secondTypeChanged={this.secondTypeChanged} />
          <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} defaultSelection={this.state.layout} />
+         <AddTypesForm onAddTypes={this.typeAdded}/>
          {rightSection}
       </div>
     );
