@@ -12,8 +12,10 @@ module.exports =  React.createClass({
     return function (e) {
       var typeOne = $('#addTypesSection .addTypeOneInput')[0].value;
       var typeTwo = $('#addTypesSection .addTypeTwoInput')[0].value;
-      var typeType = $('#addTypesSection .addTypeTypeInput')[0].value;
-      onAddTypes(typeOne, typeTwo, typeType);
+      var typeType = $('#addTypesSection .addTypeTypeInput option:selected')[0].value;
+      if (typeOne && typeTwo) {
+        onAddTypes(typeOne, typeTwo, typeType);
+      }
     };
   },
   handleChange: function (onTypeChange) {

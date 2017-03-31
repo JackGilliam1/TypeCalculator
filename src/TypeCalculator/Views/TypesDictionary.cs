@@ -29,10 +29,6 @@ namespace TypeCalculator.Views
 
         public IList<ElementStats> GetStats()
         {
-            if (_elementStats != null)
-            {
-                return _elementStats;
-            }
             _elementStats = new List<ElementStats>();
 
             var elementTypes = ElementTypes.AllButNone;
@@ -87,7 +83,18 @@ namespace TypeCalculator.Views
 
         public void AddType(string typeOne, string typeTwo, StatType statType)
         {
+            _database.AddStat(typeOne, typeTwo, statType);
+        }
+    }
 
+    public class TypesList
+    {
+        public int Id { get; set; }
+        public IList<string> Types { get; set; }
+
+        public TypesList()
+        {
+            Types = new List<string>();
         }
     }
 

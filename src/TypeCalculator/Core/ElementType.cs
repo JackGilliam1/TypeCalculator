@@ -33,7 +33,7 @@ namespace TypeCalculator.Core
             }
         }
 
-        public static IList<string> Types { get { return new List<string>(types); } }
+        public static IList<string> Types { get { return new List<string>(types); } set { types = value; } }
 
         private static IList<string> types = new List<string>
         {

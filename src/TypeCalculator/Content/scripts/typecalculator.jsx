@@ -69,7 +69,7 @@ module.exports = TypeCalculator = React.createClass({
     //typeStat WeakDef, WeakAtk, StrongDef, StrongAtk, Immune
     var self = this;
     $.ajax('types/addType', {
-      data: { TypeOne: typeOne, TypeTwo: typeTwo, Stats: typeStat },
+      data: { TypeOne: typeOne, TypeTwo: typeTwo, Stat: typeStat },
       success: function (data) {
         if (self.isMounted()) {
           self.setState({

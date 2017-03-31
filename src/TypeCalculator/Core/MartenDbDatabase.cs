@@ -1,5 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FubuCore.Binding.Values;
 using Marten;
+using TypeCalculator.Views;
 
 namespace TypeCalculator.Core
 {
@@ -29,8 +33,8 @@ namespace TypeCalculator.Core
                 };
                 session.Store(attributes);
                 session.SaveChanges();
-                return attributes;
             }
+            return GetAttributesFor(elementType);
         }
 
         public void UpdateAttributes(ElementTypeAttributes attributes)
@@ -43,6 +47,92 @@ namespace TypeCalculator.Core
                 session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.WeakAttack, attributes.WeakAttack);
                 session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.WeakDefense, attributes.WeakDefense);
                 session.SaveChanges();
+            }
+        }
+
+        public void AddStat(string typeOne, string typeTwo, StatType statType)
+        {
+            addStat(typeOne, typeTwo, statType);
+            var oppositeStat = StatType.ImmuneDefense;
+            switch (statType)
+            {
+                case StatType.StrongAttack:
+                    oppositeStat = StatType.WeakDefense;
+                    break;
+                case StatType.WeakAttack:
+                    oppositeStat = StatType.StrongDefense;
+                    break;
+                case StatType.StrongDefense:
+                    oppositeStat = StatType.WeakAttack;
+                    break;
+                case StatType.WeakDefense:
+                    oppositeStat = StatType.StrongAttack;
+                    break;
+                case StatType.ImmuneDefense:
+                    break;
+                default:
+                    throw new Exception("No Stat types found matching: " + statType);
+            }
+            if (statType != StatType.ImmuneDefense)
+            {
+                addStat(typeTwo, typeOne, oppositeStat);
+            }
+        }
+
+        private void addStat(string typeOne, string typeTwo, StatType statType)
+        {
+            var attributes = GetAttributesFor(typeOne);
+
+            switch (statType)
+            {
+                case StatType.StrongAttack:
+                    attributes.AddStrongAttack(typeTwo);
+                    break;
+                case StatType.WeakAttack:
+                    attributes.AddWeakAttack(typeTwo);
+                    break;
+                case StatType.StrongDefense:
+                    attributes.AddStrongDefense(typeTwo);
+                    break;
+                case StatType.WeakDefense:
+                    attributes.AddWeakDefense(typeTwo);
+                    break;
+                case StatType.ImmuneDefense:
+                    attributes.AddImmuneDefense(typeTwo);
+                    break;
+                default:
+                    throw new Exception("No Stat types found matching: " + statType);
+            }
+
+            UpdateAttributes(attributes);
+            var types = GetTypesList();
+            types.Add(typeOne);
+            types.Add(typeTwo);
+            UpdateTypesList(types);
+        }
+
+        public void UpdateTypesList(IList<string> types)
+        {
+            using (var session = _docStore.OpenSession())
+            {
+                var typesList = session.Query<TypesList>()
+                    .SingleOrDefault();
+                if (typesList == null)
+                {
+                    typesList = new TypesList();
+                }
+                var newTypes = types.Concat(typesList.Types).Distinct().ToList();
+                typesList.Types = newTypes;
+                session.Store(typesList);
+                session.SaveChanges();
+            }
+        }
+
+        public IList<string> GetTypesList()
+        {
+            using (var session = _docStore.OpenSession())
+            {
+                return session.Query<TypesList>().SingleOrDefault()?.Types ?? new List<string>();
             }
         }
     }

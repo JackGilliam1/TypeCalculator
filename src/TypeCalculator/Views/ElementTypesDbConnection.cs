@@ -32,6 +32,8 @@ namespace TypeCalculator.Views
             addStrongDefense();
             addWeakDefense();
             addImmuneDefense();
+            _database.UpdateTypesList(ElementTypes.Types);
+            ElementTypes.Types = _database.GetTypesList();
         }
 
         private void addStrongAttacks()

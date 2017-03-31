@@ -1,5 +1,7 @@
-﻿using MongoDB.Driver;
+﻿using System.Collections.Generic;
+using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using TypeCalculator.Views;
 
 namespace TypeCalculator.Core
 {
@@ -42,6 +44,21 @@ namespace TypeCalculator.Core
         {
             var collection = _database.GetCollection<ElementTypeAttributes>(_settings.ElementAttributesCollectionName);
             return collection;
-        } 
+        }
+
+        public void AddStat(string typeOne, string typeTwo, StatType stat)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateTypesList(IList<string> types)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IList<string> GetTypesList()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
