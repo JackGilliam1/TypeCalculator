@@ -7,9 +7,9 @@ namespace TypeCalculator.Core
         public string ElementType { get; private set; }
         public IList<ElementStat> Stats { get; private set; }
 
-        public ElementStats(ElementType elementType)
+        public ElementStats(string elementType)
         {
-            ElementType = elementType.ToString();
+            ElementType = elementType;
             Stats = new List<ElementStat>();
         }
     }

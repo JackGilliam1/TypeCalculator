@@ -7,8 +7,9 @@ namespace TypeCalculator.Views
 {
     public interface ITypesDictionary
     {
-        ElementTypeAttributes GetAttributes(ElementType type);
+        ElementTypeAttributes GetAttributes(string type);
         IList<ElementStats> GetStats();
+        void AddType(string typeOne, string typeTwo, StatType statType);
     }
 
     public class TypesDictionary : ITypesDictionary
@@ -21,7 +22,7 @@ namespace TypeCalculator.Views
             _database = database;
         }
 
-        public ElementTypeAttributes GetAttributes(ElementType type)
+        public ElementTypeAttributes GetAttributes(string type)
         {
             return _database.GetAttributesFor(type);
         }
@@ -34,11 +35,9 @@ namespace TypeCalculator.Views
             }
             _elementStats = new List<ElementStats>();
 
-            var elementTypes = ((ElementType[]) Enum.GetValues(typeof (ElementType)))
-                .Where(x => !x.Equals(ElementType.None))
-                .ToList();
+            var elementTypes = ElementTypes.AllButNone;
 
-            var tempDictionary = new Dictionary<ElementType, ElementStats>();
+            var tempDictionary = new Dictionary<string, ElementStats>();
 
             elementTypes.Each(x => tempDictionary.Add(x, new ElementStats(x)));
 
@@ -77,13 +76,18 @@ namespace TypeCalculator.Views
             return _elementStats = tempDictionary.Values.ToList();
         }
 
-        private static IList<ElementType> GetFrom(IDictionary<ElementType, IList<ElementType>> typeDictionary, ElementType type)
+        private static IList<string> GetFrom(IDictionary<string, IList<string>> typeDictionary, string type)
         {
             if (!typeDictionary.ContainsKey(type))
             {
-                return new List<ElementType>();
+                return new List<string>();
             }
             return typeDictionary[type];
+        }
+
+        public void AddType(string typeOne, string typeTwo, StatType statType)
+        {
+
         }
     }
 

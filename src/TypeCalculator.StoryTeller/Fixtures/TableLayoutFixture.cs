@@ -2,7 +2,6 @@
 using Serenity;
 using Serenity.Fixtures;
 using StoryTeller.Engine;
-using TypeCalculator.Core;
 
 namespace TypeCalculator.StoryTeller.Fixtures
 {
@@ -11,8 +10,8 @@ namespace TypeCalculator.StoryTeller.Fixtures
     {
         [FormatAs("Select Type Combination {typeOne}, {typeTwo}")]
         public void SelectTypeCombination(
-            [EnumSelectionValues(typeof (ElementType), "None")] string typeOne,
-            [EnumSelectionValues(typeof (ElementType), "None")] string typeTwo)
+            [EnumSelectionValues(typeof (string), "None")] string typeOne,
+            [EnumSelectionValues(typeof (string), "None")] string typeTwo)
         {
             var selector = By.ClassName(typeOne + typeTwo);
             Driver.FindElement(selector)
@@ -21,8 +20,8 @@ namespace TypeCalculator.StoryTeller.Fixtures
 
         [FormatAs("Type Combination {typeOne} and {typeTwo} Should Be Selected")]
         public bool TypeCombinationShouldBeSelected(
-            [EnumSelectionValues(typeof (ElementType), "None")] string typeOne,
-            [EnumSelectionValues(typeof (ElementType), "None")] string typeTwo)
+            [EnumSelectionValues(typeof (string), "None")] string typeOne,
+            [EnumSelectionValues(typeof (string), "None")] string typeTwo)
         {
             var selector = By.ClassName(typeOne + typeTwo);
             return Wait.Until(() => Driver.FindElement(selector).HasClass("selected"));

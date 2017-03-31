@@ -15,7 +15,7 @@ namespace TypeCalculator.Core
             _database = client.GetServer().GetDatabase(_settings.DatabaseName);
         }
 
-        public ElementTypeAttributes GetAttributesFor(ElementType elementType)
+        public ElementTypeAttributes GetAttributesFor(string elementType)
         {
             var query = Query<ElementTypeAttributes>.EQ(x => x.ElementType, elementType);
             var collection = GetAttributesCollection();

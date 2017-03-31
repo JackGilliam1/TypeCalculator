@@ -14,7 +14,7 @@ module.exports = TypeCalculator = React.createClass({
   getInitialState: function() {
     var defaultTypes = [];
     return {
-      selectedAddType: 'strongAtk',
+      selectedAddType: 'StrongAttack',
       selectedFirstType: 'None',
       selectedSecondType: 'None',
       layout: 'Table',
@@ -63,16 +63,27 @@ module.exports = TypeCalculator = React.createClass({
         layout: newLayout 
     });
   },
-  typeAdded: function(typeOne, typeTwo, typeType) {
-    //typeOne WeakDef, WeakAtk, StrongDef, StrongAtk, Immun
+  typeAdded: function(typeOne, typeTwo, typeStat) {
+    //typeOne Water, Fire, Grass, Custom...
     //typeTwo Water, Fire, Grass, Custom...
-    //typeName Water, Fire, Grass, Custom...
-    var yes = typeOne;
+    //typeStat WeakDef, WeakAtk, StrongDef, StrongAtk, Immune
+    var self = this;
+    $.ajax('types/addType', {
+      data: { TypeOne: typeOne, TypeTwo: typeTwo, Stats: typeStat },
+      success: function (data) {
+        if (self.isMounted()) {
+          self.setState({
+            stats: data.Stats
+          });
+        }
+      }
+    });
   },
   render: function () {
     var rightSection;
     if(this.state.layout === 'Table') {
       rightSection = <TypesTableLayout
+                       stats={this.state.stats}
                        selectedFirstType={this.state.selectedFirstType}
                        selectedSecondType={this.state.selectedSecondType}
                        onCellClick={this.firstAndSecondTypeChanged} />
@@ -104,7 +115,7 @@ module.exports = TypeCalculator = React.createClass({
          <SwitchLayoutsSection onLayoutSwitch={this.layoutChanged} defaultSelection={this.state.layout} />
          <AddTypesForm onAddTypes={this.typeAdded}
                        selectedAddType={this.state.selectedAddType}
-                       addTypeChange={this.selectedAddTypeChange}/>
+                       selectedAddTypeChange={this.selectedAddTypeChange}/>
          {rightSection}
       </div>
     );

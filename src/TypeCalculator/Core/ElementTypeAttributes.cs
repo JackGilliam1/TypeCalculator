@@ -6,50 +6,50 @@ namespace TypeCalculator.Core
     public class ElementTypeAttributes
     {
         public int Id { get; set; }
-        public ElementType ElementType { get; set; }
+        public string ElementType { get; set; }
         public bool Updated { get; set; }
 
-        public IList<ElementType> StrongAttack { get; set; }
-        public IList<ElementType> WeakAttack { get; set; }
-        public IList<ElementType> StrongDefense { get; set; }
-        public IList<ElementType> WeakDefense { get; set; }
-        public IList<ElementType> ImmuneDefense { get; set; }
+        public IList<string> StrongAttack { get; set; }
+        public IList<string> WeakAttack { get; set; }
+        public IList<string> StrongDefense { get; set; }
+        public IList<string> WeakDefense { get; set; }
+        public IList<string> ImmuneDefense { get; set; }
 
         public ElementTypeAttributes()
         {
-            StrongAttack = new List<ElementType>();
-            WeakAttack = new List<ElementType>();
-            StrongDefense = new List<ElementType>();
-            WeakDefense = new List<ElementType>();
-            ImmuneDefense = new List<ElementType>();
+            StrongAttack = new List<string>();
+            WeakAttack = new List<string>();
+            StrongDefense = new List<string>();
+            WeakDefense = new List<string>();
+            ImmuneDefense = new List<string>();
             Updated = false;
         }
 
-        public void SetStrongAttack(IEnumerable<ElementType> elementTypes)
+        public void SetStrongAttack(IEnumerable<string> elementTypes)
         {
             StrongAttack = elementTypes.ToList();
             Updated = true;
         }
 
-        public void SetWeakAttack(IEnumerable<ElementType> elementTypes)
+        public void SetWeakAttack(IEnumerable<string> elementTypes)
         {
             WeakAttack = elementTypes.ToList();
             Updated = true;
         }
 
-        public void SetStrongDefense(IEnumerable<ElementType> elementTypes)
+        public void SetStrongDefense(IEnumerable<string> elementTypes)
         {
             StrongDefense = elementTypes.ToList();
             Updated = true;
         }
 
-        public void SetWeakDefense(IEnumerable<ElementType> elementTypes)
+        public void SetWeakDefense(IEnumerable<string> elementTypes)
         {
             WeakDefense = elementTypes.ToList();
             Updated = true;
         }
 
-        public void SetImmuneDefense(IEnumerable<ElementType> elementTypes)
+        public void SetImmuneDefense(IEnumerable<string> elementTypes)
         {
             ImmuneDefense = elementTypes.ToList();
             Updated = true;

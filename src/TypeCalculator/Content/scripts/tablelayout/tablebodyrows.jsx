@@ -4,7 +4,7 @@
 var staticMethodClass = React.createClass({
     statics: {
         shouldUpdateTheComponent: function(properties, nextProps) {
-            return properties.selectedFirstType !== nextProps.selectedFirstType || properties.selectedSecondType !== nextProps.selectedSecondType;
+            return properties.selectedFirstType !== nextProps.selectedFirstType || properties.selectedSecondType !== nextProps.selectedSecondType || true;
         }
     },
     render: function() {

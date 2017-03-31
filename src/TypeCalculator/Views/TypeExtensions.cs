@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TypeCalculator.Core;
 
 namespace TypeCalculator.Views
 {
     public static class TypeExtensions
     {
-        public static void Add(this IDictionary<ElementType, IList<ElementType>> elementDictionary, ElementType element, params ElementType[] elementTypes)
+        public static void Add(this IDictionary<string, IList<string>> elementDictionary, string element, params string[] elementTypes)
         {
             elementDictionary.Add(element, elementTypes.ToList());
         }

@@ -18,11 +18,11 @@ namespace TypeCalculator.Views.Types
         [UrlPattern("types/getStats")]
         public TypesResponse GetStats(TypesRequest request)
         {
-            if (request.ElementTwo == ElementType.None || request.ElementOne == request.ElementTwo)
+            if (request.ElementTwo == ElementTypes.None || request.ElementOne == request.ElementTwo)
             {
                 return GetStatsFor(request.ElementOne);
             }
-            if (request.ElementOne == ElementType.None)
+            if (request.ElementOne == ElementTypes.None)
             {
                 return GetStatsFor(request.ElementTwo);
             }
@@ -62,7 +62,7 @@ namespace TypeCalculator.Views.Types
             };
         }
 
-        private TypesResponse GetStatsFor(ElementType type)
+        private TypesResponse GetStatsFor(string type)
         {
             var attributes = _typesDictionary.GetAttributes(type);
             return new TypesResponse
@@ -75,8 +75,8 @@ namespace TypeCalculator.Views.Types
             };
         }
 
-        private IEnumerable<string> GetMultiTypeAttackStats(ElementType typeOne, ElementType typeTwo,
-            ICollection<ElementType> typeOneAttack, ICollection<ElementType> typeTwoAttack)
+        private IEnumerable<string> GetMultiTypeAttackStats(string typeOne, string typeTwo,
+            ICollection<string> typeOneAttack, ICollection<string> typeTwoAttack)
         {
             return typeOneAttack
                 .Concat(typeTwoAttack)
@@ -95,7 +95,7 @@ namespace TypeCalculator.Views.Types
                 }); 
         }
 
-        private IEnumerable<string> GetMultiTypeStats(IEnumerable<IGrouping<ElementType, ElementType>> typeGroups)
+        private IEnumerable<string> GetMultiTypeStats(IEnumerable<IGrouping<string, string>> typeGroups)
         {
             return typeGroups.Select((typeGroup) =>
             {
@@ -116,8 +116,7 @@ namespace TypeCalculator.Views.Types
         {
             return new GetTypesResponse
             {
-                Types = Enum.GetNames(typeof (ElementType))
-                    .ToList()
+                Types = ElementTypes.Types
             };
         }
 
@@ -131,12 +130,11 @@ namespace TypeCalculator.Views.Types
         }
 
         [UrlPattern("types/addType")]
-        public AddTypeResponse AddType(AddTypeRequest request)
+        public TypesTableResponse AddType(AddTypeRequest request)
         {
-            return new AddTypeResponse
-            {
-
-            };
+            ElementTypes.AddType(request.TypeOne);
+            _typesDictionary.AddType(request.TypeOne, request.TypeTwo, request.Stat);
+            return GetTypes(new TypesTableRequest());
         }
     }
 }

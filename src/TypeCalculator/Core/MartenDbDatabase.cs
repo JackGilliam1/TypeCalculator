@@ -12,7 +12,7 @@ namespace TypeCalculator.Core
             _docStore = DocumentStore.For($"host={settings.Url};database={settings.DatabaseName};password={settings.Password};username={settings.Username}");
         }
 
-        public ElementTypeAttributes GetAttributesFor(ElementType elementType)
+        public ElementTypeAttributes GetAttributesFor(string elementType)
         {
             using (var session = _docStore.OpenSession())
             {

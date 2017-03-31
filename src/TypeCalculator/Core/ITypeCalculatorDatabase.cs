@@ -2,7 +2,7 @@
 {
     public interface ITypeCalculatorDatabase
     {
-        ElementTypeAttributes GetAttributesFor(ElementType elementType);
+        ElementTypeAttributes GetAttributesFor(string elementType);
         void UpdateAttributes(ElementTypeAttributes attributes);
     }
 }

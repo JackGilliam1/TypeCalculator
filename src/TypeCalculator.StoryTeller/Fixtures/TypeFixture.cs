@@ -17,10 +17,12 @@ namespace TypeCalculator.StoryTeller.Fixtures
             AddSelectionValues("BadgeStatus", new [] {
                 "Updating", "Updated"
             });
+            AddSelectionValues("Types",
+                ElementTypes.Types.ToArray());
         }
 
         [FormatAs("Select Type One: {selectType}")]
-        public void SelectType([EnumSelectionValues(typeof(ElementType))] string selectType)
+        public void SelectType([SelectionValues("Types")] string selectType)
         {
             var selector = By.CssSelector("#typeOneSidebarSelect .selection-item." + selectType.ToLower());
             Driver.WaitForElement(selector);
@@ -30,7 +32,7 @@ namespace TypeCalculator.StoryTeller.Fixtures
         }
 
         [FormatAs("Select Type Two: {selectType}")]
-        public void SelectTypeTwo([EnumSelectionValues(typeof(ElementType))] string selectType)
+        public void SelectTypeTwo([SelectionValues("Types")] string selectType)
         {
             var selector = By.CssSelector("#typeTwoSidebarSelect .selection-item." + selectType.ToLower());
             Driver.WaitForElement(selector);

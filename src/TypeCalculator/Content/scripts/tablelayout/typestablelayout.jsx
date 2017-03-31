@@ -34,7 +34,7 @@ module.exports = React.createClass({
           });
   },
   render: function() {
-    var stats = this.state.stats;
+    var stats = this.props.stats || this.state.stats;
 
     if(!stats) {
       return <EmptyTable />;

@@ -7,9 +7,9 @@ namespace TypeCalculator.Core
         public string ElementType { get; private set; }
         public MultiplierStrength MultiplierStrength { get; private set; }
 
-        public ElementStat(ElementType elementType, MultiplierStrength multiplierStrength)
+        public ElementStat(string elementType, MultiplierStrength multiplierStrength)
         {
-            ElementType = elementType.ToString();
+            ElementType = elementType;
             MultiplierStrength = multiplierStrength;
         }
     }
