@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TypeCalculator.Core;
 
@@ -13,10 +14,12 @@ namespace TypeCalculator.Views
     public class ElementTypesDbConnection : IElementTypesDbConnection
     {
         private readonly ITypeCalculatorDatabase _database;
+        private IList<ElementTypeAttributes> _attributes;
 
         public ElementTypesDbConnection(ITypeCalculatorDatabase database)
         {
             _database = database;
+            _attributes = new List<ElementTypeAttributes>();
         }
 
         public bool ShouldUpdateStats()
@@ -27,6 +30,16 @@ namespace TypeCalculator.Views
 
         public void UpdateStats()
         {
+            foreach (var type in ElementTypes.Types)
+            {
+                var attr = _database.GetAttributesFor(type);
+                _attributes.Add(new ElementTypeAttributes
+                {
+                    Id = attr.Id,
+                    ElementType = type
+                });
+            }
+            _database.InsertAttributes(_attributes);
             addStrongAttacks();
             addWeakAttacks();
             addStrongDefense();

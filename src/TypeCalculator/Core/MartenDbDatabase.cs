@@ -135,5 +135,10 @@ namespace TypeCalculator.Core
                 return session.Query<TypesList>().SingleOrDefault()?.Types ?? new List<string>();
             }
         }
+
+        public void InsertAttributes(IEnumerable<ElementTypeAttributes> attributes)
+        {
+            _docStore.BulkInsert(attributes.ToArray(), BulkInsertMode.OverwriteExisting);
+        }
     }
 }

@@ -60,5 +60,10 @@ namespace TypeCalculator.Core
         {
             throw new System.NotImplementedException();
         }
+
+        public void InsertAttributes(IEnumerable<ElementTypeAttributes> attributes)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
