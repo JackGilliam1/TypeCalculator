@@ -72,8 +72,11 @@ module.exports = TypeCalculator = React.createClass({
       data: { TypeOne: typeOne, TypeTwo: typeTwo, Stat: typeStat },
       success: function (data) {
         if (self.isMounted()) {
+          var types = ['None'];
+          data.Stats.forEach(function(stat) { types.push(stat.ElementType) });
           self.setState({
-            stats: data.Stats
+            stats: data.Stats,
+            types: types
           });
         }
       }

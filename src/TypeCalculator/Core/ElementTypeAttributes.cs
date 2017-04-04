@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Marten.Schema;
 
 namespace TypeCalculator.Core
 {
     public class ElementTypeAttributes
     {
-        public int Id { get; set; }
+        [Identity]
         public string ElementType { get; set; }
         public bool Updated { get; set; }
 
@@ -27,42 +28,55 @@ namespace TypeCalculator.Core
 
         public void AddStrongAttack(string elementType)
         {
-            if (!WeakAttack.Contains(elementType) && !StrongAttack.Contains(elementType))
+            if (StrongAttack.Contains(elementType))
             {
-                StrongAttack.Add(elementType);
+                return;
             }
+            WeakAttack.Remove(elementType);
+            StrongAttack.Add(elementType);
         }
 
         public void AddWeakAttack(string elementType)
         {
-            if (!StrongAttack.Contains(elementType) && !WeakAttack.Contains(elementType))
+            if (WeakAttack.Contains(elementType))
             {
-                WeakAttack.Add(elementType);
+                return;
             }
+            StrongAttack.Remove(elementType);
+            WeakAttack.Add(elementType);
         }
 
         public void AddStrongDefense(string elementType)
         {
-            if (!WeakDefense.Contains(elementType) && !StrongDefense.Contains(elementType))
+            if (StrongDefense.Contains(elementType))
             {
-                StrongDefense.Add(elementType);
+                return;
             }
+            ImmuneDefense.Remove(elementType);
+            WeakDefense.Remove(elementType);
+            StrongDefense.Add(elementType);
         }
 
         public void AddWeakDefense(string elementType)
         {
-            if (!StrongDefense.Contains(elementType) && !WeakDefense.Contains(elementType))
+            if (WeakDefense.Contains(elementType))
             {
-                WeakDefense.Add(elementType);
+                return;
             }
+            ImmuneDefense.Remove(elementType);
+            StrongDefense.Remove(elementType);
+            WeakDefense.Add(elementType);
         }
 
         public void AddImmuneDefense(string elementType)
         {
-            if (!StrongDefense.Contains(elementType) && !WeakDefense.Contains(elementType) && !ImmuneDefense.Contains(elementType))
+            if (ImmuneDefense.Contains(elementType))
             {
-                ImmuneDefense.Add(elementType);
+                return;
             }
+            StrongDefense.Remove(elementType);
+            WeakDefense.Remove(elementType);
+            ImmuneDefense.Add(elementType);
         }
 
         public void SetStrongAttack(IEnumerable<string> elementTypes)

@@ -8,13 +8,14 @@ namespace TypeCalculator.Views
     public interface IElementTypesDbConnection
     {
         bool ShouldUpdateStats();
+        void UpdateTypesList();
         void UpdateStats();
     }
 
     public class ElementTypesDbConnection : IElementTypesDbConnection
     {
         private readonly ITypeCalculatorDatabase _database;
-        private IList<ElementTypeAttributes> _attributes;
+        private readonly IList<ElementTypeAttributes> _attributes;
 
         public ElementTypesDbConnection(ITypeCalculatorDatabase database)
         {
@@ -28,15 +29,20 @@ namespace TypeCalculator.Views
             return !elementTypes.All(elementType => _database.GetAttributesFor(elementType).Updated);
         }
 
+        public void UpdateTypesList()
+        {
+            _database.UpdateTypesList(ElementTypes.Types);
+            ElementTypes.Types = _database.GetTypesList().Types;
+        }
+
         public void UpdateStats()
         {
             foreach (var type in ElementTypes.Types)
             {
-                var attr = _database.GetAttributesFor(type);
                 _attributes.Add(new ElementTypeAttributes
                 {
-                    Id = attr.Id,
-                    ElementType = type
+                    ElementType = type,
+                    Updated = true
                 });
             }
             _database.InsertAttributes(_attributes);
@@ -45,8 +51,7 @@ namespace TypeCalculator.Views
             addStrongDefense();
             addWeakDefense();
             addImmuneDefense();
-            _database.UpdateTypesList(ElementTypes.Types);
-            ElementTypes.Types = _database.GetTypesList();
+            UpdateTypesList();
         }
 
         private void addStrongAttacks()

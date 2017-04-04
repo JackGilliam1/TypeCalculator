@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FubuCore.Binding.Values;
 using Marten;
 using TypeCalculator.Views;
 
@@ -41,11 +40,11 @@ namespace TypeCalculator.Core
         {
             using (var session = _docStore.OpenSession())
             {
-                session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.ImmuneDefense, attributes.ImmuneDefense);
-                session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.StrongAttack, attributes.StrongAttack);
-                session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.StrongDefense, attributes.StrongDefense);
-                session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.WeakAttack, attributes.WeakAttack);
-                session.Patch<ElementTypeAttributes>(x => x.ElementType == attributes.ElementType).Set(x => x.WeakDefense, attributes.WeakDefense);
+                session.Patch<ElementTypeAttributes>(attributes.ElementType).Set(x => x.ImmuneDefense, attributes.ImmuneDefense);
+                session.Patch<ElementTypeAttributes>(attributes.ElementType).Set(x => x.StrongAttack, attributes.StrongAttack);
+                session.Patch<ElementTypeAttributes>(attributes.ElementType).Set(x => x.StrongDefense, attributes.StrongDefense);
+                session.Patch<ElementTypeAttributes>(attributes.ElementType).Set(x => x.WeakAttack, attributes.WeakAttack);
+                session.Patch<ElementTypeAttributes>(attributes.ElementType).Set(x => x.WeakDefense, attributes.WeakDefense);
                 session.SaveChanges();
             }
         }
@@ -77,6 +76,11 @@ namespace TypeCalculator.Core
             {
                 addStat(typeTwo, typeOne, oppositeStat);
             }
+            var types = GetTypesList();
+            types.AddType(typeOne);
+            types.AddType(typeTwo);
+            UpdateTypesList(types.Types);
+            ElementTypes.Types = types.Types;
         }
 
         private void addStat(string typeOne, string typeTwo, StatType statType)
@@ -105,13 +109,9 @@ namespace TypeCalculator.Core
             }
 
             UpdateAttributes(attributes);
-            var types = GetTypesList();
-            types.Add(typeOne);
-            types.Add(typeTwo);
-            UpdateTypesList(types);
         }
 
-        public void UpdateTypesList(IList<string> types)
+        public void UpdateTypesList(IEnumerable<string> types)
         {
             using (var session = _docStore.OpenSession())
             {
@@ -121,18 +121,18 @@ namespace TypeCalculator.Core
                 {
                     typesList = new TypesList();
                 }
-                var newTypes = types.Concat(typesList.Types).Distinct().ToList();
+                var newTypes = typesList.Types.Concat(types).Distinct().ToList();
                 typesList.Types = newTypes;
                 session.Store(typesList);
                 session.SaveChanges();
             }
         }
 
-        public IList<string> GetTypesList()
+        public TypesList GetTypesList()
         {
             using (var session = _docStore.OpenSession())
             {
-                return session.Query<TypesList>().SingleOrDefault()?.Types ?? new List<string>();
+                return session.Query<TypesList>().SingleOrDefault();
             }
         }
 

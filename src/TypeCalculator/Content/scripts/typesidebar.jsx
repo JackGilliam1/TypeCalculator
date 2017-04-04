@@ -51,11 +51,11 @@ module.exports = React.createClass({
                 return <a key={type} className={className} href="#" onClick={onClick} value={lowerType}>{type}</a>;
               });
   },
-    render: function () {
+  render: function () {
     var defaultElement = <a key="None" href="#" className="clickable selection-item selected" value="none">None</a>,
         firstElements = [defaultElement],
         secondElements = [defaultElement],
-        types = this.state.types,
+        types = this.props.types || this.state.types,
         onFirstTypeClicked = this.handleClickFor(this.props.firstTypeChanged, 'selectedFirstType'),
         onSecondTypeClicked = this.handleClickFor(this.props.secondTypeChanged, 'selectedSecondType')
         selectedFirstType = this.props.selectedFirstType || 'None',

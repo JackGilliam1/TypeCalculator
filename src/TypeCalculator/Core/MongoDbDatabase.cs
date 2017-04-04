@@ -51,12 +51,12 @@ namespace TypeCalculator.Core
             throw new System.NotImplementedException();
         }
 
-        public void UpdateTypesList(IList<string> types)
+        public void UpdateTypesList(IEnumerable<string> types)
         {
             throw new System.NotImplementedException();
         }
 
-        public IList<string> GetTypesList()
+        public TypesList GetTypesList()
         {
             throw new System.NotImplementedException();
         }

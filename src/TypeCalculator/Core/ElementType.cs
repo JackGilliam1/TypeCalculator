@@ -29,13 +29,13 @@ namespace TypeCalculator.Core
         {
             get
             {
-                return types.Where(x => !x.Equals(None)).ToList();
+                return _types.Where(x => !x.Equals(None)).ToList();
             }
         }
 
-        public static IList<string> Types { get { return new List<string>(types); } set { types = value; } }
+        public static IList<string> Types { get { return new List<string>(_types); } set { _types = value; } }
 
-        private static IList<string> types = new List<string>
+        private static IList<string> _types = new List<string>
         {
             None,
             Bug,
@@ -60,9 +60,9 @@ namespace TypeCalculator.Core
 
         public static void AddType(string type)
         {
-            if (!types.Contains(type))
+            if (!_types.Contains(type))
             {
-                types.Add(type);
+                _types.Add(type);
             }
         }
     }

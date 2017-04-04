@@ -29,9 +29,12 @@ namespace TypeCalculator.Views
 
         public IList<ElementStats> GetStats()
         {
-            _elementStats = new List<ElementStats>();
-
             var elementTypes = ElementTypes.AllButNone;
+            if (_elementStats != null && _elementStats.Count == elementTypes.Count)
+            {
+                return _elementStats;
+            }
+            _elementStats = new List<ElementStats>();
 
             var tempDictionary = new Dictionary<string, ElementStats>();
 
@@ -95,6 +98,15 @@ namespace TypeCalculator.Views
         public TypesList()
         {
             Types = new List<string>();
+        }
+
+        public void AddType(string type)
+        {
+            if (Types.Contains(type))
+            {
+                return;
+            }
+            Types.Add(type);
         }
     }
 

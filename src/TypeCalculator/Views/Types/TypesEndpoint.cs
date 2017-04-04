@@ -132,12 +132,7 @@ namespace TypeCalculator.Views.Types
         [UrlPattern("types/addType")]
         public TypesTableResponse AddType(AddTypeRequest request)
         {
-            //StatType statType;
-            //if (Enum.TryParse(request.Stat, out statType))
-            //{
-                ElementTypes.AddType(request.TypeOne);
-                _typesDictionary.AddType(request.TypeOne, request.TypeTwo, request.Stat);
-            //}
+            _typesDictionary.AddType(request.TypeOne, request.TypeTwo, request.Stat);
             return GetTypes(new TypesTableRequest());
         }
     }

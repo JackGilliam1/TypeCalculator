@@ -19,6 +19,10 @@ namespace TypeCalculator.Views
             {
                 _connection.UpdateStats();
             }
+            else
+            {
+                _connection.UpdateTypesList();
+            }
         }
     }
 }
