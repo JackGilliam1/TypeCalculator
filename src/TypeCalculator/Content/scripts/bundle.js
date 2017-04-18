@@ -433,11 +433,8 @@
 	      data: { TypeOne: typeOne, TypeTwo: typeTwo, Stat: typeStat },
 	      success: function (data) {
 	        if (self.isMounted()) {
-	          var types = ['None'];
-	          data.Stats.forEach(function(stat) { types.push(stat.ElementType) });
 	          self.setState({
-	            stats: data.Stats,
-	            types: types
+	            stats: data.Stats
 	          });
 	        }
 	      }
@@ -30110,11 +30107,11 @@
 	                return React.createElement("a", {key: type, className: className, href: "#", onClick: onClick, value: lowerType}, type);
 	              });
 	  },
-	  render: function () {
+	    render: function () {
 	    var defaultElement = React.createElement("a", {key: "None", href: "#", className: "clickable selection-item selected", value: "none"}, "None"),
 	        firstElements = [defaultElement],
 	        secondElements = [defaultElement],
-	        types = this.props.types || this.state.types,
+	        types = this.state.types,
 	        onFirstTypeClicked = this.handleClickFor(this.props.firstTypeChanged, 'selectedFirstType'),
 	        onSecondTypeClicked = this.handleClickFor(this.props.secondTypeChanged, 'selectedSecondType')
 	        selectedFirstType = this.props.selectedFirstType || 'None',
@@ -30539,7 +30536,7 @@
 	      var typeOne = $('#addTypesSection .addTypeOneInput')[0].value;
 	      var typeTwo = $('#addTypesSection .addTypeTwoInput')[0].value;
 	      var typeType = $('#addTypesSection .addTypeTypeInput option:selected')[0].value;
-	      if (typeOne && typeTwo && typeOne !== typeTwo) {
+	      if (typeOne && typeTwo) {
 	        onAddTypes(typeOne, typeTwo, typeType);
 	      }
 	    };
